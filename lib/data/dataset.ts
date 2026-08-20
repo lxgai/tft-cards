@@ -9,6 +9,7 @@ import { slugify, assertUniqueSlugs } from "./slug";
 import { normalizeAbility, normalizeTraitDescription, parseMana, isMeaningful } from "./text";
 import { compareKey, parseDescription } from "./traitParser";
 import { maskTerms, stillLeaks } from "./redact";
+import { ABILITY_SUMMARIES } from "./ability-summaries";
 import { NON_QUIZZABLE_TRAITS, TRAIT_DESCRIPTION_OVERRIDES } from "./overrides";
 import {
   COSTS,
@@ -146,8 +147,14 @@ function buildChampion(raw: RawChampion, warn: (w: DataWarning) => void): Champi
     warn({ kind: "redaction-miss", entity: name, detail: "own name or trait survives redaction" });
   }
 
+  const slug = slugify(name);
+  const summary = ABILITY_SUMMARIES[slug] ?? [];
+  if (summary.length === 0) {
+    warn({ kind: "summary-missing", entity: name, detail: "no authored bullet summary" });
+  }
+
   return {
-    slug: slugify(name),
+    slug,
     name,
     cost: asCost(raw.cost, name),
     traitSlugs: raw.traits.map(slugify),
@@ -155,6 +162,8 @@ function buildChampion(raw: RawChampion, warn: (w: DataWarning) => void): Champi
     abilityName: raw.abilityName,
     mana: parseMana(raw.abilityMana),
     ability,
+    summary,
+    redactedSummary: summary.map((line) => maskTerms(line, terms).text),
     redactedAbility: masked.text,
     portrait: null,
   };

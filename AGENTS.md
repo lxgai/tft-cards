@@ -40,6 +40,12 @@ or fill in a value, and never generate a question whose answer would be one.
 Where the data cannot support something, say so in the UI — there is already a
 `caveat` block and a "not spelled out in the source data" treatment for this.
 
+**The ability summaries are authored, and bound by the same rule.**
+`lib/data/ability-summaries.ts` is the only hand-written content here. A bullet
+may not contain a digit that is absent from that champion's ability text — the
+test enforces it across all 65. Use the `ability-summaries` skill to write or
+revise one.
+
 **Grading happens once, at the end of a quiz.** No per-question right/wrong
 feedback, however tempting; answering straight through is the point. The
 correct/wrong visual treatment belongs on the results screen.

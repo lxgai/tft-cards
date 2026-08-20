@@ -108,6 +108,13 @@ export type Champion = {
   mana: Mana;
   /** Normalized ability text — what the study deck shows. */
   ability: string;
+  /**
+   * Hand-written bullets, the only authored content in the app. See
+   * lib/data/ability-summaries.ts for the rules they are held to.
+   */
+  summary: string[];
+  /** The bullets with self-references masked, for reverse questions. */
+  redactedSummary: string[];
   /** Ability with the champion's own name and trait names masked. */
   redactedAbility: string;
   /**
@@ -125,6 +132,7 @@ export type DataWarning = {
     | "tier-text-missing"
     | "tier-text-duplicate"
     | "redaction-miss"
+    | "summary-missing"
     | "empty-roster"
     | "shape-mismatch"
     | "override";

@@ -18,6 +18,8 @@ export type CardBlock =
   | { type: "kv"; label: string; value: string }
   /** Trait breakpoints. `text: null` renders as "no distinct effect in data". */
   | { type: "tiers"; items: { breakpoint: number; color: TierColor; text: string | null }[] }
+  /** The short form of a long paragraph — what you actually rehearse. */
+  | { type: "bullets"; items: string[] }
   /** Secondary text: keyword glossaries, trait flavour. */
   | { type: "note"; text: string }
   /** A remark about the data itself, not the game. Rendered smallest. */

@@ -18,7 +18,7 @@ the result, and the result is gone when you navigate away. That is deliberate.
 | `npm run build` | Static export to `./out`, then generate `out/sw.js` |
 | `npm run preview` | Build and serve `./out` on :4321 |
 | `npm run serve` | Serve an existing `./out` without rebuilding |
-| `npm test` | 89 unit tests — the data layer and every distractor rule |
+| `npm test` | 96 unit tests — the data layer and every distractor rule |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run inspect` | Print what the data layer made of the source export |
@@ -148,6 +148,25 @@ over. `npm run inspect` reports all of it. In short:
   text; reverse questions ("whose ability is this?") mask it out first.
 - **Eclipse has no champions.** It is described by its activation condition and
   excluded from every generated question.
+
+## Ability summaries
+
+Every champion's ability also has two to five hand-written bullets, in
+`lib/data/ability-summaries.ts` — the only authored content in the app.
+
+They exist because the source text is a paragraph with its numbers stripped
+("deal an additional damage"), which is hard to rehearse from. On an ability
+card the bullets lead and the source paragraph sits underneath as the
+reference, so a summary that drops something is visibly wrong rather than
+quietly wrong.
+
+Being authored, they are the one place the app could invent something, so the
+rules are tests rather than conventions: **no bullet may contain a digit that
+is absent from that champion's ability text**, two to five bullets, 88
+characters each, always shorter than the source, and every champion covered.
+`lib/data/ability-summaries.test.ts` checks all of it against all 65.
+
+To write or revise one, use the `ability-summaries` skill in `.claude/skills/`.
 
 ## Decisions worth knowing
 

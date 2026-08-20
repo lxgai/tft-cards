@@ -117,6 +117,18 @@ function Block({ block }: { block: CardBlock }) {
         </div>
       );
 
+    case "bullets":
+      return (
+        <ul className="flex flex-col gap-[10px]">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex gap-[10px]">
+              <span className="hex mt-[7px] h-[9px] w-2 flex-none bg-ink" aria-hidden />
+              <span className="text-[16px] leading-[1.4] text-pretty">{item}</span>
+            </li>
+          ))}
+        </ul>
+      );
+
     case "tiers":
       return <Tiers items={block.items} />;
 

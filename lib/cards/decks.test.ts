@@ -105,7 +105,9 @@ describe("deck list", () => {
     expect(aphelios.id).toBe("champion:aphelios#champ-profile");
     expect(blocks(aphelios, "chips")[0].items.map((i) => i.label)).toEqual(["Lunar", "Rapidfire"]);
     expect(blocks(aphelios, "subject")[0].text).toBe("Moonlight's Onslaught");
-    expect(blocks(aphelios, "text")[0].text).toContain("Equip Severum");
+    expect(blocks(aphelios, "bullets")[0].items[0]).toContain("Swipes the target");
+    // The source paragraph stays underneath the bullets as the reference.
+    expect(blocks(aphelios, "note")[0].text).toContain("Equip Severum");
   });
 
   it("leaves Eclipse out of the roster deck but keeps it in descriptions", () => {
