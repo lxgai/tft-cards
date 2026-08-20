@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/build-sw.mjs",
     "lint": "eslint",
     "inspect": "vite-node -c vitest.config.mts scripts/inspect-data.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "cards": "vite-node -c vitest.config.mts scripts/sample-cards.ts",
     "quiz": "vite-node -c vitest.config.mts scripts/sample-quiz.ts",
-    "preview": "next build && node scripts/preview.mjs",
+    "preview": "npm run build && node scripts/preview.mjs",
     "serve": "node scripts/preview.mjs"
   },
   "dependencies": {

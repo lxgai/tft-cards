@@ -13,8 +13,9 @@ the result, and the result is gone when you navigate away. That is deliberate.
 
 | | |
 |---|---|
-| `npm run dev` | Development server |
-| `npm run preview` | Build the static export and serve `./out` on :4321 |
+| `npm run dev` | Development server (no service worker) |
+| `npm run build` | Static export to `./out`, then generate `out/sw.js` |
+| `npm run preview` | Build and serve `./out` on :4321 |
 | `npm run serve` | Serve an existing `./out` without rebuilding |
 | `npm test` | Unit tests — the data layer and every distractor rule |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -47,6 +48,21 @@ A card template and a question template are both config objects: entity type,
 faces or options, and a stable id scheme (`{entityType}:{slug}#{templateId}`).
 Nothing in either engine knows what a champion is. Adding augments means
 writing templates and registering them.
+
+## Offline
+
+`scripts/build-sw.mjs` runs after `next build` and writes `out/sw.js`: a service
+worker that precaches every file the export produced, versioned by a hash of
+their contents so a new build supersedes the old cache. With it registered the
+whole app — all 12 decks, all 22 units — opens and runs with no network.
+
+It caches **the built application only**: HTML, JS, CSS, fonts, the icon. No
+answer, score or deck position is written there or anywhere else. The app is
+still stateless between page loads.
+
+Deploy note: serve `sw.js` with a short or no-store cache header, or browsers
+will hold an old worker past a deploy. Everything under `/_next/static` is
+content-hashed and safe to cache forever.
 
 ## About the source data
 
