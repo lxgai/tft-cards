@@ -3,7 +3,8 @@
 Flashcards and quizzes for memorizing Teamfight Tactics Set 18 — champions,
 traits, breakpoints and abilities. Built for in-game recall on a phone between
 games: designed at 390px, tap targets at 44px and up, installable to a home
-screen, and it works with no network.
+screen, and it works with no network. From 1024px it opens out into a desktop
+layout — same vocabulary, more of it on screen at once.
 
 Static site: no server, no database, no accounts, no analytics. **Nothing is
 persisted.** No localStorage, no sessionStorage, no cookies, no IndexedDB, and
@@ -106,6 +107,18 @@ maps a cost or a breakpoint colour to its swatch.
 A single committed palette, no dark variant: inverting it would lose the tier
 metals the whole design is built around. Fonts are self-hosted by `next/font`
 rather than fetched from Google, so typography survives offline.
+
+Two breakpoints, both additive — the mobile layout is the base and nothing is
+taken away:
+
+| | |
+|---|---|
+| base | 390px column, bottom tab bar, one card at a time |
+| `lg` 1024px | top nav, deck rail, the study card opens into two columns so the champion stays put while the answer arrives beside it, quiz question left and answers right, syllabus shows every unit inline |
+| `xl` 1280px | the card index rail, listing this deck's contents to jump straight to one |
+
+Both study rails collapse to a labelled spine. That state is component state and
+dies with the page, like everything else here.
 
 Two deliberate departures from the canvas: it drew per-question right/wrong
 feedback, which contradicts grading at the end, so that treatment is used on the

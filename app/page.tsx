@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Screen, TabBar } from "@/components/chrome";
+import { DesktopHeader, Screen, TabBar } from "@/components/chrome";
 import { buildDecks } from "@/lib/cards/decks";
 import { getDataset } from "@/lib/data/dataset";
 import { LEVELS, UNITS } from "@/lib/quiz/curriculum";
@@ -12,16 +12,17 @@ export default function Home() {
 
   return (
     <Screen>
-      <header className="px-5 pt-[30px] pb-[18px]">
+      <DesktopHeader tone="light" active="/" eyebrow="TFT SET 18" />
+      <header className="px-5 pt-[30px] pb-[18px] lg:mx-auto lg:w-full lg:max-w-[1100px] lg:pt-16">
         <p className="font-display text-[12px] font-bold tracking-[.16em] text-trace">
           {data.champions.length} CHAMPIONS · {data.traits.length} TRAITS
         </p>
-        <h1 className="mt-2 font-display text-[38px] leading-[1.05] font-bold tracking-[-0.04em]">
+        <h1 className="mt-2 font-display text-[38px] leading-[1.05] font-bold tracking-[-0.04em] lg:text-[72px] lg:tracking-[-0.045em]">
           TFT Set 18
         </h1>
       </header>
 
-      <main className="flex flex-1 flex-col gap-[14px] px-5 pb-[18px]">
+      <main className="flex flex-1 flex-col gap-[14px] px-5 pb-[18px] lg:mx-auto lg:w-full lg:max-w-[1100px] lg:flex-row lg:gap-6 lg:pb-16">
         <Link
           href="/study"
           className="flex flex-1 flex-col justify-between rounded-[20px] border-b-[5px] border-trace bg-surface p-[22px]"

@@ -87,6 +87,12 @@ colour to its swatch.
 - **Contrast:** the muted greys (`trace`, `mute`) are for labels, counters and
   eyebrows. Any sentence meant to be read uses `slate` or darker.
 - Mobile first at 390px. Tap targets 44px and up. No hover-only interaction.
+- **Desktop is additive.** `lg` (1024px) adds the top nav, the deck rail and
+  the two-column layouts; `xl` (1280px) adds the card index. Write the mobile
+  layout as the base and reach for `lg:` to grow it — never the reverse, and
+  never a separate desktop component tree.
+- `Hex` takes its size from `className`, not props, so it can grow at a
+  breakpoint. An inline width would beat any `lg:` utility.
 
 ## Gotchas
 

@@ -98,7 +98,7 @@ function Block({ block }: { block: CardBlock }) {
                 key={name}
                 className="flex items-center gap-2 rounded-full bg-bone py-[3px] pr-3 pl-[3px] text-[14px] font-semibold"
               >
-                <Hex swatch={costSwatch(block.cost)} width={20} height={23} fontSize={11}>
+                <Hex swatch={costSwatch(block.cost)} className="h-[23px] w-5 text-[11px]">
                   {block.cost}
                 </Hex>
                 {name}
@@ -124,7 +124,7 @@ function Block({ block }: { block: CardBlock }) {
           {block.items.map((item, i) => (
             <li key={i} className="flex gap-[10px]">
               <span className="hex mt-[7px] h-[9px] w-2 flex-none bg-ink" aria-hidden />
-              <span className="text-[16px] leading-[1.6] text-pretty">
+              <span className="text-[16px] leading-[1.6] text-pretty lg:text-[17px]">
                 <Highlighted text={item} />
               </span>
             </li>
@@ -169,7 +169,7 @@ function Highlighted({ text }: { text: string }) {
 
 function Tiers({ items }: { items: Extract<CardBlock, { type: "tiers" }>["items"] }) {
   // Five breakpoints have to fit 390px, so the ladder shrinks rather than wraps.
-  const width = items.length > 4 ? 44 : 52;
+  const size = items.length > 4 ? "h-[50px] w-11 text-[19px]" : "h-[59px] w-[52px] text-[22px]";
   const described = items.some((tier) => tier.text);
 
   return (
@@ -177,7 +177,7 @@ function Tiers({ items }: { items: Extract<CardBlock, { type: "tiers" }>["items"
       <div className="flex gap-2">
         {items.map((tier) => (
           <div key={tier.breakpoint} className="flex flex-1 flex-col items-center gap-[7px]">
-            <Hex swatch={tierSwatch(tier.color)} width={width} height={Math.round(width * 1.135)}>
+            <Hex swatch={tierSwatch(tier.color)} className={size}>
               {tier.breakpoint}
             </Hex>
             <span className="font-display text-[10.5px] font-semibold tracking-[.1em] text-trace">

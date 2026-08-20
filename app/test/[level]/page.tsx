@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Screen, TestBar } from "@/components/chrome";
+import { DesktopHeader, Screen, TestBar } from "@/components/chrome";
 import { LEVELS } from "@/lib/quiz/curriculum";
 import { unitSlug } from "@/lib/quiz/routes";
 
@@ -18,17 +18,24 @@ export default async function LevelPage({ params }: { params: Promise<{ level: s
 
   return (
     <Screen>
+      <DesktopHeader
+        tone="ink"
+        active="/test"
+        eyebrow={`LEVEL ${String(level.level).padStart(2, "0")} · ${level.band} · ${level.title.toUpperCase()}`}
+        backHref="/test"
+        right={`${level.units.length} units · assumes ${level.assumes}`}
+      />
       <TestBar
         eyebrow={`LEVEL ${String(level.level).padStart(2, "0")} · ${level.band}`}
         title={level.title}
         backHref="/test"
       />
 
-      <p className="px-[18px] pt-[14px] pb-2 text-[14.5px] leading-[1.45] text-pretty text-slate">
+      <p className="px-[18px] pt-[14px] pb-2 text-[14.5px] leading-[1.45] text-pretty text-slate lg:mx-auto lg:w-full lg:max-w-[900px] lg:px-0 lg:pt-8 lg:text-[16px]">
         {level.blurb} Assumes {level.assumes}.
       </p>
 
-      <main className="flex-1 overflow-y-auto px-4 pb-4">
+      <main className="flex-1 overflow-y-auto px-4 pb-4 lg:mx-auto lg:grid lg:w-full lg:max-w-[900px] lg:auto-rows-min lg:grid-cols-2 lg:gap-2 lg:px-0">
         {level.units.map((unit) => (
           <Link
             key={unit.id}

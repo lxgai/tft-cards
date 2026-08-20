@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Screen, TabBar } from "@/components/chrome";
+import { DesktopHeader, Screen, TabBar } from "@/components/chrome";
 import { HexDot } from "@/components/hex";
 import { accentSwatch } from "@/components/tiers";
 import { buildDecks } from "@/lib/cards/decks";
@@ -13,7 +13,13 @@ export default function StudyIndex() {
 
   return (
     <Screen>
-      <header className="px-[18px] pt-[18px] pb-3">
+      <DesktopHeader
+        tone="light"
+        active="/study"
+        eyebrow="STUDY · NOT SCORED"
+        right={`${decks.length} decks · ${cards} cards`}
+      />
+      <header className="px-[18px] pt-[18px] pb-3 lg:hidden">
         <div className="mb-2 flex items-center gap-2">
           <HexDot />
           <span className="font-display text-[12px] font-bold tracking-[.14em] text-slate">
@@ -28,12 +34,12 @@ export default function StudyIndex() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 pb-4">
+      <main className="flex-1 overflow-y-auto px-4 pb-4 lg:columns-2 lg:gap-6 lg:px-8 lg:pt-4 xl:columns-3">
         {SECTION_ORDER.map((section) => {
           const inSection = decks.filter((deck) => deck.section === section);
           if (!inSection.length) return null;
           return (
-            <section key={section}>
+            <section key={section} className="break-inside-avoid lg:mb-2">
               <h2 className="px-[13px] pt-4 pb-2 font-mono text-[11.5px] font-medium tracking-[.09em] text-mute uppercase">
                 {SECTION_LABELS[section]}
               </h2>

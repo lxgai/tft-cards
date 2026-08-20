@@ -6,7 +6,7 @@ import { getDataset } from "@/lib/data/dataset";
 import { findUnit } from "@/lib/quiz/curriculum";
 import { buildQuiz } from "@/lib/quiz/generate";
 
-import { Screen, TestBar } from "./chrome";
+import { DesktopHeader, Screen, TestBar } from "./chrome";
 import { QuizRunner } from "./quiz-runner";
 
 const subscribe = () => () => {};
@@ -38,6 +38,12 @@ export function QuizPage({ unitId, backHref }: { unitId: string; backHref: strin
   if (!quiz) {
     return (
       <Screen>
+        <DesktopHeader
+          tone="ink"
+          active="/test"
+          eyebrow={`${unit.id} · ${unit.title.toUpperCase()}`}
+          backHref={backHref}
+        />
         <TestBar eyebrow={`${unit.id} · ${unit.title.toUpperCase()}`} />
         <div className="flex flex-1 items-center justify-center">
           <p className="font-display text-[15px] font-bold tracking-[.06em] text-mute">DEALING…</p>
