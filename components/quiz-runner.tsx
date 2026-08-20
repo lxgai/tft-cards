@@ -37,6 +37,12 @@ export function QuizRunner({ quiz, unit, backHref }: { quiz: Quiz; unit: Unit; b
   const picked = session.answers[question.id] ?? [];
   const multi = question.mode === "multi";
 
+  // The subject is the thing you have to recognize, so it leads. Rendering it
+  // in a surface card put it in the answer list's clothes — it read as a fifth
+  // option you could tap.
+  const subject = question.prompt.find((block) => block.type === "subject");
+  const extras = question.prompt.filter((block) => block.type !== "subject");
+
   return (
     <Screen>
       <TestBar
@@ -44,19 +50,28 @@ export function QuizRunner({ quiz, unit, backHref }: { quiz: Quiz; unit: Unit; b
         right={`${session.index + 1} / ${session.quiz.questions.length}`}
       />
 
-      <div className={multi ? "px-[18px] pt-3 pb-2" : "px-[18px] pt-[26px] pb-5"}>
-        <h1
-          className={`font-display font-bold tracking-[-0.03em] text-pretty ${
-            multi ? "text-[21px] leading-[1.25]" : "text-[28px] leading-[1.25]"
-          }`}
-        >
-          <Lead text={question.lead} emphasis={question.emphasis} />
-        </h1>
+      <div className={multi ? "px-[18px] pt-3 pb-3" : "px-[18px] pt-[26px] pb-5"}>
+        {subject ? (
+          <>
+            <p className="text-[14px] font-semibold text-slate">{question.lead}</p>
+            <h1 className="mt-1 font-display text-[36px] leading-[1.05] font-bold tracking-[-0.04em] text-pretty">
+              {subject.text}
+            </h1>
+          </>
+        ) : (
+          <h1
+            className={`font-display font-bold tracking-[-0.03em] text-pretty ${
+              multi ? "text-[21px] leading-[1.25]" : "text-[28px] leading-[1.25]"
+            }`}
+          >
+            <Lead text={question.lead} emphasis={question.emphasis} />
+          </h1>
+        )}
       </div>
 
-      {question.prompt.length > 0 ? (
-        <div className="mx-[18px] mb-4 flex max-h-[42vh] flex-col gap-3 overflow-y-auto rounded-[16px] bg-surface p-[18px]">
-          <Blocks blocks={question.prompt} />
+      {extras.length > 0 ? (
+        <div className="mx-[18px] mb-4 flex max-h-[38vh] flex-col gap-3 overflow-y-auto rounded-[16px] bg-surface p-[18px]">
+          <Blocks blocks={extras} />
         </div>
       ) : null}
 
@@ -273,16 +288,45 @@ function Results({
   );
 }
 
+/**
+ * What the question was actually about. The lead alone is often generic —
+ * "Origin, Class, or Unique?" tells you nothing a week later — so a miss has
+ * to carry its subject too.
+ */
+function subjectOf(question: Question): string | null {
+  for (const block of question.prompt) {
+    if (block.type === "subject") return block.text;
+    if (block.type === "chips") return block.items.map((item) => item.label).join(" + ");
+    if (block.type === "text") {
+      const first = block.text.split("\n")[0].trim();
+      return first.length > 96 ? `${first.slice(0, 93).trimEnd()}…` : first;
+    }
+  }
+  return null;
+}
+
 function Miss({ question, given }: { question: Question; given: string[] }) {
   const label = (ids: string[]) =>
     question.options
       .filter((o) => ids.includes(o.id))
       .map((o) => o.label)
       .join(", ");
+  const subject = subjectOf(question);
 
   return (
     <div className="mb-2 flex flex-col gap-[6px] rounded-[14px] border-l-4 border-wrong bg-surface p-[14px]">
-      <p className="text-[14.5px] leading-[1.35] font-semibold text-pretty text-ink-soft">
+      {subject ? (
+        <p className="font-display text-[17px] leading-[1.2] font-bold tracking-[-0.02em] text-pretty">
+          {subject}
+        </p>
+      ) : null}
+      <p
+        className={`leading-[1.35] text-pretty ${
+          subject
+            ? "text-[13.5px] text-slate"
+            : "text-[14.5px] font-semibold text-ink-soft"
+        }`}
+      >
         {question.lead}
       </p>
       <p className="text-[13px] font-medium text-wrong-ink">

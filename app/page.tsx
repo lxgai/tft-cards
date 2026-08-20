@@ -14,12 +14,10 @@ export default function Home() {
     <Screen>
       <header className="px-5 pt-[30px] pb-[18px]">
         <p className="font-display text-[12px] font-bold tracking-[.16em] text-trace">
-          SET 18 · {data.champions.length} CHAMPIONS · {data.traits.length} TRAITS
+          {data.champions.length} CHAMPIONS · {data.traits.length} TRAITS
         </p>
         <h1 className="mt-2 font-display text-[38px] leading-[1.05] font-bold tracking-[-0.04em]">
-          Know it
-          <br />
-          on sight.
+          TFT Set 18
         </h1>
       </header>
 

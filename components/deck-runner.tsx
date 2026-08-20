@@ -134,12 +134,13 @@ export function DeckRunner({ deck }: { deck: Deck }) {
         <NavButton onClick={() => go(-1)} disabled={index === 0} label="Previous card">
           ←
         </NavButton>
+        {/* A toggle, both ways. Moving on is the arrows, a swipe, or the card. */}
         <button
           type="button"
-          onClick={() => (flipped ? go(1) : setFlipped(true))}
+          onClick={() => setFlipped((f) => !f)}
           className="flex min-h-[60px] flex-1 items-center justify-center rounded-2xl bg-ink font-display text-[15px] font-bold tracking-[.06em] text-on-ink"
         >
-          {flipped ? "NEXT" : "FLIP"}
+          {flipped ? "FLIP BACK" : "FLIP"}
         </button>
         <NavButton onClick={() => go(1)} disabled={index === cards.length - 1} label="Next card">
           →
