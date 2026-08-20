@@ -18,7 +18,7 @@ the result, and the result is gone when you navigate away. That is deliberate.
 | `npm run build` | Static export to `./out`, then generate `out/sw.js` |
 | `npm run preview` | Build and serve `./out` on :4321 |
 | `npm run serve` | Serve an existing `./out` without rebuilding |
-| `npm test` | 87 unit tests — the data layer and every distractor rule |
+| `npm test` | 89 unit tests — the data layer and every distractor rule |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run inspect` | Print what the data layer made of the source export |
@@ -30,17 +30,21 @@ check a data or generation change without opening a browser.
 
 ## The two sections
 
-**Study** — 47 decks, 341 cards, in three sections. Pick a deck, flip through
-it. Tap the card or press space to flip, swipe or use the arrow keys to move,
+**Study** — 38 decks, 341 cards, in six sections. Pick a deck, flip through it.
+Tap the card or press space to flip, swipe or use the arrow keys to move,
 shuffle if you want a different order. Nothing is scored and nothing is counted.
 
-| Section | Deck | Front | Back |
+| Section | Decks | Front | Back |
 |---|---|---|---|
-| By cost | 1-cost … 5-cost traits | Champion | Its traits, each with its breakpoint metals |
-| By cost | 1-cost … 5-cost abilities | Champion | Ability name, mana, and what it does |
-| Traits | Trait descriptions | Trait | Type, breakpoint ladder, effect |
-| Traits | Trait rosters | Trait | Every champion with it, grouped by cost |
-| By trait | "Lunar champions", one per trait (35) | Champion | Its traits *and* its ability |
+| Traits by Cost | 1-cost … 5-cost (5) | Champion | Its traits, each with its breakpoint metals |
+| Abilities by Cost | 1-cost … 5-cost (5) | Champion | Ability name, mana, and what it does |
+| Traits General | Trait descriptions, trait rosters (2) | Trait | Breakpoint ladder and effect; or the roster by cost |
+| Champions by Trait (Origin) | "Lunar champions" (13) | Champion | Its traits *and* its ability |
+| Champions by Trait (Class) | "Vanguard champions" (12) | Champion | Its traits *and* its ability |
+| Champions by Trait (Unique) | Unique champions (1) | Champion | Its traits *and* its ability |
+
+The ten Unique traits hold one champion each, so they share a deck rather than
+being ten dead ends. Eclipse has no champions and so no deck.
 
 A champion in three traits appears in three of the by-trait decks, as the same
 card: a card id names its content, not where you met it.
@@ -114,7 +118,7 @@ meant to be read uses `#5B564E` — `#A39D92` body text is 2.5:1.
 `scripts/build-sw.mjs` runs after `next build` and writes `out/sw.js`: a service
 worker that precaches every file the export produced, versioned by a hash of
 their contents so a new build supersedes the old cache. With it registered the
-whole app — all 47 decks, all 22 units — opens and runs with no network.
+whole app — all 38 decks, all 22 units — opens and runs with no network.
 
 It caches **the built application only**: HTML, JS, CSS, fonts, the icon. No
 answer, score or deck position is written there or anywhere else. The app is

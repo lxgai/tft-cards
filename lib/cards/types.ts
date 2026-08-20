@@ -64,7 +64,13 @@ export type DeckAccent =
   | { kind: "tier"; color: TierColor };
 
 /** Where the deck sits in the deck list. */
-export type DeckSection = "by-cost" | "traits" | "by-trait";
+export type DeckSection =
+  | "traits-by-cost"
+  | "abilities-by-cost"
+  | "traits-general"
+  | "by-trait-origin"
+  | "by-trait-class"
+  | "by-trait-unique";
 
 export type Deck = {
   id: string;
@@ -77,7 +83,20 @@ export type Deck = {
 };
 
 export const SECTION_LABELS: Record<DeckSection, string> = {
-  "by-cost": "By cost",
-  traits: "Traits",
-  "by-trait": "By trait",
+  "traits-by-cost": "Traits by Cost",
+  "abilities-by-cost": "Abilities by Cost",
+  "traits-general": "Traits General",
+  "by-trait-origin": "Champions by Trait (Origin)",
+  "by-trait-class": "Champions by Trait (Class)",
+  "by-trait-unique": "Champions by Trait (Unique)",
 };
+
+/** Deck-list order. */
+export const SECTION_ORDER: DeckSection[] = [
+  "traits-by-cost",
+  "abilities-by-cost",
+  "traits-general",
+  "by-trait-origin",
+  "by-trait-class",
+  "by-trait-unique",
+];

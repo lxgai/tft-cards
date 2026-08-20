@@ -4,10 +4,8 @@ import { Screen, TabBar } from "@/components/chrome";
 import { HexDot } from "@/components/hex";
 import { accentSwatch } from "@/components/tiers";
 import { buildDecks } from "@/lib/cards/decks";
-import { SECTION_LABELS, type Deck, type DeckSection } from "@/lib/cards/types";
+import { SECTION_LABELS, SECTION_ORDER, type Deck } from "@/lib/cards/types";
 import { getDataset } from "@/lib/data/dataset";
-
-const SECTIONS: DeckSection[] = ["by-cost", "traits", "by-trait"];
 
 export default function StudyIndex() {
   const decks = buildDecks(getDataset());
@@ -31,7 +29,7 @@ export default function StudyIndex() {
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 pb-4">
-        {SECTIONS.map((section) => {
+        {SECTION_ORDER.map((section) => {
           const inSection = decks.filter((deck) => deck.section === section);
           if (!inSection.length) return null;
           return (

@@ -4,7 +4,7 @@ import { buildDataset } from "@/lib/data/dataset";
 import { makeRng } from "@/lib/rng";
 
 import { buildDecks, orderCards } from "./decks";
-import type { Card, CardBlock } from "./types";
+import { SECTION_ORDER, type Card, type CardBlock } from "./types";
 
 const data = buildDataset();
 const decks = buildDecks(data);
@@ -41,18 +41,54 @@ describe("deck list", () => {
   });
 
   it("covers every champion twice across the cost decks", () => {
-    const champCards = decks.filter((d) => d.section === "by-cost").flatMap((d) => d.cards);
+    const champCards = decks
+      .filter((d) => d.section === "traits-by-cost" || d.section === "abilities-by-cost")
+      .flatMap((d) => d.cards);
     expect(champCards).toHaveLength(130);
     expect(new Set(champCards.map((c) => c.entitySlug)).size).toBe(65);
   });
 
-  it("adds one deck per fieldable trait, sized to its roster", () => {
-    const byTrait = decks.filter((d) => d.section === "by-trait");
-    expect(byTrait).toHaveLength(35);
+  it("groups the deck list into the six sections, in order", () => {
+    const seen: string[] = [];
+    for (const deck of decks) if (seen.at(-1) !== deck.section) seen.push(deck.section);
+    expect(seen).toEqual(SECTION_ORDER);
+  });
+
+  it("adds one deck per Origin and Class trait, sized to its roster", () => {
+    const byTrait = decks.filter(
+      (d) => d.section === "by-trait-origin" || d.section === "by-trait-class",
+    );
+    // 14 Origins less Eclipse, plus 12 Classes.
+    expect(byTrait).toHaveLength(25);
     expect(byTrait.map((d) => d.title)).toContain("Lunar champions");
     for (const deck of byTrait) {
       const trait = data.traits.find((t) => `${t.name} champions` === deck.title)!;
+      expect(trait.type).not.toBe("Unique");
       expect(deck.cards.map((c) => c.entitySlug)).toEqual(trait.championSlugs);
+    }
+  });
+
+  it("gathers the Unique traits into one deck rather than ten of one card", () => {
+    expect(decks.filter((d) => d.section === "by-trait-unique").map((d) => d.id)).toEqual([
+      "unique-champions",
+    ]);
+    const uniques = deck("unique-champions");
+    expect(uniques.cards).toHaveLength(10);
+    // Champion order, not trait order.
+    expect(uniques.cards.map((c) => c.entitySlug)).toEqual([
+      "kog-maw",
+      "malphite",
+      "zyra",
+      "alune",
+      "draven",
+      "ivern",
+      "lux",
+      "maokai",
+      "taric",
+      "the-elder-dragon",
+    ]);
+    for (const id of ["trait-caustic", "trait-greenfather", "trait-avatar"]) {
+      expect(decks.map((d) => d.id)).not.toContain(id);
     }
   });
 
