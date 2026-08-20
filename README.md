@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TFT Set 18 flashcards
 
-## Getting Started
+Flashcards and quizzes for memorizing Teamfight Tactics Set 18 — champions,
+traits, breakpoints and abilities. Built for in-game recall on a phone between
+games.
 
-First, run the development server:
+Static site: no server, no database, no accounts, no analytics. **Nothing is
+persisted.** No localStorage, no sessionStorage, no cookies, no IndexedDB, and
+no state smuggled through the URL. A quiz is graded when you finish it, you see
+the result, and the result is gone when you navigate away. That is deliberate.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Commands
+
+| | |
+|---|---|
+| `npm run dev` | Development server |
+| `npm run preview` | Build the static export and serve `./out` on :4321 |
+| `npm run serve` | Serve an existing `./out` without rebuilding |
+| `npm test` | Unit tests — the data layer and every distractor rule |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint |
+| `npm run inspect` | Print what the data layer made of the source export |
+| `npm run cards` | Print real study cards from every deck |
+| `npm run quiz [unit]` | Print real questions, e.g. `npm run quiz 4.2` |
+
+## Layout
+
+```
+data/            champions.json, traits.json (+ augments, wisps for phase 2)
+lib/data/        loading, normalizing, the trait description parser, slugs
+lib/cards/       card templates and the 12 study decks
+lib/quiz/        question templates, distractor strategies, grading, session
+app/             the two sections: Study and Test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Study and Test share the data layer and nothing else — Study never grades, Test
+never shows an ungraded card.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A card template and a question template are both config objects: entity type,
+faces or options, and a stable id scheme (`{entityType}:{slug}#{templateId}`).
+Nothing in either engine knows what a champion is. Adding augments means
+writing templates and registering them.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## About the source data
 
-## Learn More
+`data/champions.json` and `data/traits.json` are a scrape of the Set 18 client
+export, and they have quirks the code handles explicitly rather than papering
+over. `npm run inspect` reports all of it. In short:
 
-To learn more about Next.js, take a look at the following resources:
+- **Numbers are stripped.** Descriptions read "gain a Shield for seconds". The
+  app never restores, guesses or displays a number that isn't in the data, and
+  never asks a question whose answer would be one.
+- **`effects` is empty on all 36 traits**, so per-breakpoint effects are parsed
+  out of the description's `(2)` / `(3)` markers. The result is classified, not
+  trusted: 10 traits genuinely differ per breakpoint, 14 have one effect that
+  simply grows, and 12 have a single breakpoint or none. Only the first group
+  gets breakpoint-specific questions. Two breakpoints that read identically
+  once numbers are gone (Inferno 5 and 7) are never asked about.
+- **Text names its own subject.** 27 trait descriptions contain their trait
+  name and 14 abilities contain their champion's. Study decks show the raw
+  text; reverse questions ("whose ability is this?") mask it out first.
+- **Eclipse has no champions.** It is described by its activation condition and
+  excluded from every generated question.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Not in v1
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Augments and Wisps (the data is in `data/`, phase 2), persistence of any kind,
+stats, score history, spaced repetition, accounts, items, emblems, portals, and
+champion portraits — `Champion.portrait` is a documented empty slot.
