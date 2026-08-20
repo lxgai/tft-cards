@@ -37,6 +37,15 @@
   --color-tier-4: #8a4fd1;
   --color-tier-5: #e0a21f;
 
+  /*
+   * Highlighter tints for ability bullets. Soft enough to read as a marker
+   * over paper, and light enough that ink stays the text colour on all four.
+   */
+  --color-mark-physical: #f6dec4;
+  --color-mark-magic: #e6d9f6;
+  --color-mark-control: #f8e8b6;
+  --color-mark-utility: #d7e4f8;
+
   /* Trait breakpoint metals, parallel to the `colors` array in traits.json. */
   --color-bronze: #a9754a;
   --color-silver: #9aa3ac;
@@ -72,6 +81,15 @@
     color: inherit;
     text-decoration: none;
   }
+}
+
+/* Highlighted phrases inside a bullet. Marker over paper, not a chip. */
+mark {
+  color: inherit;
+  border-radius: 3px;
+  padding: 1px 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* The signature element: cost lives in a hexagon. */

@@ -1,28 +1,11 @@
 import { describe, expect, it } from "vitest";
 
+import { highlight } from "@/lib/cards/highlight";
+
 import { ABILITY_SUMMARIES } from "./ability-summaries";
 import { buildDataset } from "./dataset";
 
 const data = buildDataset();
-
-/**
- * A bullet's class is read from its opening verb, which is why the openers are
- * fixed. Anything else is "other" and may sit wherever it reads best.
- */
-type Kind = "damage" | "control" | "utility" | "other";
-
-const CONTROL = /^(Stuns|Taunts|Knocks up|Sleeps|Charms|Disarms)\b/;
-const UTILITY = /^(Slows|Shreds|Wounds|Burns|Sunders|Reduces|Ignites|Mana Reaves|Poisons)\b/;
-
-function kindOf(bullet: string): Kind {
-  if (/^Deals\b/.test(bullet)) return "damage";
-  if (CONTROL.test(bullet)) return "control";
-  if (UTILITY.test(bullet)) return "utility";
-  return "other";
-}
-
-const positionsOf = (bullets: string[], kind: Kind) =>
-  bullets.map((b, i) => [kindOf(b), i] as const).filter(([k]) => k === kind).map(([, i]) => i);
 
 describe("authored ability summaries", () => {
   it("covers every champion", () => {
@@ -61,51 +44,14 @@ describe("authored ability summaries", () => {
       expect(champion.summary.length, champion.name).toBeGreaterThanOrEqual(1);
       expect(champion.summary.length, champion.name).toBeLessThanOrEqual(7);
     }
-    // Alistar's roar does five separate things.
-    expect(ABILITY_SUMMARIES.alistar).toHaveLength(5);
-  });
-
-  it("leads with damage when the ability deals any", () => {
-    for (const champion of data.champions) {
-      const damage = positionsOf(champion.summary, "damage");
-      if (damage.length) expect(damage[0], champion.name).toBe(0);
-    }
-  });
-
-  it("orders damage, then crowd control, then utility", () => {
-    for (const champion of data.champions) {
-      const damage = positionsOf(champion.summary, "damage");
-      const control = positionsOf(champion.summary, "control");
-      const utility = positionsOf(champion.summary, "utility");
-
-      if (damage.length && control.length) {
-        expect(Math.max(...damage), `${champion.name}: control before damage`).toBeLessThan(
-          Math.min(...control),
-        );
-      }
-      if (control.length && utility.length) {
-        expect(Math.max(...control), `${champion.name}: utility before control`).toBeLessThan(
-          Math.min(...utility),
-        );
-      }
-      if (damage.length && utility.length) {
-        expect(Math.max(...damage), `${champion.name}: utility before damage`).toBeLessThan(
-          Math.min(...utility),
-        );
-      }
-    }
-  });
-
-  it("keeps each class contiguous, so the groups read as groups", () => {
-    for (const champion of data.champions) {
-      for (const kind of ["damage", "control", "utility"] as const) {
-        const at = positionsOf(champion.summary, kind);
-        if (at.length < 2) continue;
-        expect(at.at(-1)! - at[0], `${champion.name}: ${kind} bullets are split up`).toBe(
-          at.length - 1,
-        );
-      }
-    }
+    // Alistar's roar does five separate things, in the order the source tells them.
+    expect(ABILITY_SUMMARIES.alistar).toEqual([
+      "Heals self",
+      "Cleanses disables",
+      "Heals the two lowest-Health allies",
+      "Deals magic damage to the target",
+      "Stuns them",
+    ]);
   });
 
   it("keeps every bullet a short phrase", () => {
@@ -143,5 +89,19 @@ describe("authored ability summaries", () => {
       "Shields self",
       "Grants the highest-damage ally decaying Attack Speed",
     ]);
+  });
+
+  /**
+   * The bullets are written in a fixed vocabulary so the highlighter can find
+   * the mechanic. A summary that names damage in words the highlighter does
+   * not know would render as a flat grey line.
+   */
+  it("names its damage in words the highlighter can colour", () => {
+    for (const champion of data.champions) {
+      const dealsDamage = /(magic|physical|true) damage/i.test(champion.ability);
+      if (!dealsDamage) continue;
+      const marked = champion.summary.flatMap((b) => highlight(b)).some((s) => s.tone);
+      expect(marked, `${champion.name}: nothing highlighted`).toBe(true);
+    }
   });
 });

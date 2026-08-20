@@ -27,20 +27,23 @@ The rules below exist to make that impossible, and `npm test` enforces them.
    heals two allies, deals damage and stuns — that is five bullets. One to
    seven per champion.
 
-3. **Order by class: damage, then crowd control, then utility.** An ability
-   that deals damage leads with damage. Everything outside those three classes
-   — shields, heals, buffs, passives, transforms, trait-buff riders — may sit
-   wherever it reads best, usually after.
+3. **Keep the ability's own order.** The paragraph tells a sequence — wind up,
+   fire, fall off — and the bullets follow it. Do not group the damage
+   together or float the crowd control up. What makes the important parts
+   findable is colour, not a reshuffle.
 
-4. **Fixed openers**, so the classes can be checked mechanically:
+4. **Use the house vocabulary**, because `lib/cards/highlight.ts` finds the
+   mechanic by matching it and colours it in place:
 
-   | Class | Opens with |
-   |---|---|
-   | damage | `Deals …` |
-   | control | `Stuns`, `Taunts`, `Knocks up`, `Sleeps`, `Charms`, `Disarms` |
-   | utility | `Slows`, `Shreds`, `Wounds`, `Burns`, `Sunders`, `Reduces`, `Ignites`, `Mana Reaves`, `Poisons` |
+   | Class | Colour | Phrases it matches |
+   |---|---|---|
+   | damage | orange / purple | `physical damage`, `magic damage` |
+   | control | yellow | `Stuns`, `Taunts`, `Knocks up`, `Sleeps`, `Charms`, `Disarms`, `crowd control` |
+   | utility | blue | `Slows`, `Shreds`, `Wounds`, `Burns`/`Burning`, `Sunders`, `Ignites`/`Ignited`, `Mana Reaves`, `Poisons`, `Reduces … Armor`/`Magic Resist` |
 
-   Bullets of the same class stay together — no damage, shield, damage.
+   A bullet that names damage in words outside this list renders flat grey, and
+   a test catches it. If a genuinely new mechanic needs a colour, add the
+   pattern to `highlight.ts` rather than writing around it.
 
 5. **Use a keyword only where the source uses it.** The glossary words are
    capitalised game terms with specific meanings. Xayah's source says "reduce
@@ -68,24 +71,25 @@ enemies in a Hex radius and% Slowing them for seconds."*
 "Slows enemies hit (reduces Attack Speed)",
 ```
 
-Two damage bullets because there are two damage events, then the utility. The
-tether itself is delivery, not a separate action, so it rides along in the
-first bullet rather than taking a line of its own.
+Two damage bullets because there are two damage events, then the slow — the
+order the source tells them in. The tether is delivery, not a separate action,
+so it rides along in the first bullet rather than taking a line of its own.
 
 Alistar — source: *"Roar, restoring Health, cleansing disables, and healing the
 two lowest percent Health allies for. Then slam the current target, dealing
 magic damage and Stunning them for seconds."*
 
 ```
-"Deals magic damage to the target",
-"Stuns them",
 "Heals self",
 "Cleanses disables",
 "Heals the two lowest-Health allies",
+"Deals magic damage to the target",
+"Stuns them",
 ```
 
-Five actions, five bullets. Note the source order is heal-first, but damage
-leads and the stun follows it; the rest keep their source order after that.
+Five actions, five bullets, in the order the roar performs them. On the card
+the damage reads orange and the stun yellow, so they are findable without
+having been moved.
 
 Bad, for contrast:
 
@@ -93,14 +97,14 @@ Bad, for contrast:
 "Gains a shield for 4 seconds"          // 4 is not in the source — invented
 "Rakan shields himself"                 // names the champion; lead with the verb
 "Heals self and cleanses disables"      // two actions in one bullet
-"Stuns the target and deals magic damage"  // control before damage, and folded
+"Deals fire damage to the target"       // not a house phrase; renders flat grey
 ```
 
 ## Conventions worth matching
 
 - **Passive / Active:** prefix the bullet when the source does — `"Passive:
-  heals on attack"`. Readers scan for it. The damage a passive deals still
-  gets a plain `Deals …` bullet up top.
+  heals on attack"`. Readers scan for it, and the source states passives
+  first, so they generally lead.
 - **Adaptor:** these abilities branch on AD versus AP. Give the branch its own
   bullet: `"Adaptor: heavily slows the target"`.
 - **Riftbeast buffs** (Scarlet, Purple, Grey, Teal, Green, Slate, Orange, Red,
@@ -119,7 +123,7 @@ For one champion:
 1. Read the source text — `npm run inspect` prints the normalized version, or
    read `data/champions.json` directly.
 2. List the actions before writing any prose. That list is the bullet count.
-3. Sort them: damage, control, utility, then the rest.
+3. Keep them in the order the ability performs them.
 4. Edit the entry in `lib/data/ability-summaries.ts`, keyed by slug.
 5. `npm test` — every rule above is an assertion in
    `lib/data/ability-summaries.test.ts`, run against all 65 champions.

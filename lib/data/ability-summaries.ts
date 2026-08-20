@@ -14,14 +14,13 @@
  *      reason these can be trusted.
  *   2. One action, one bullet. Alistar's roar heals, cleanses, heals allies,
  *      damages and stuns — that is five bullets, not two. One to seven.
- *   3. Order by class: every damage bullet, then every crowd-control bullet,
- *      then every utility bullet. Anything else may sit where it reads best.
- *      An ability that deals damage leads with damage.
- *   4. Openers are fixed, so the classes are machine-checkable:
- *        damage   "Deals ..."
- *        control  "Stuns / Taunts / Knocks up / Sleeps / Charms / Disarms ..."
- *        utility  "Slows / Shreds / Wounds / Burns / Sunders / Reduces /
- *                  Ignites / Mana Reaves / Poisons ..."
+ *   3. Keep the ability's own order. The paragraph tells a sequence and the
+ *      bullets follow it; what makes the important parts findable is the
+ *      colour, not a reshuffle. See lib/cards/highlight.ts.
+ *   4. House vocabulary, so the highlighter can find the mechanic:
+ *        damage   "Deals physical damage …" / "Deals magic damage …"
+ *        control  "Stuns / Taunts / Knocks up / Sleeps / Charms / Disarms …"
+ *        utility  "Slows / Shreds / Wounds / Burns / Sunders / Reduces …"
  *      Use a keyword only where the source uses it; where the source says
  *      "reduce their Magic Resist" rather than "Shred", so do we.
  *   5. Short phrases, no trailing period, and shorter than the source.
@@ -48,34 +47,34 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Deals magic damage in a Hex radius",
     "Slows enemies hit (reduces Attack Speed)",
   ],
-  kobuko: ["Deals magic damage on the next attack", "Heals over time"],
+  kobuko: ["Heals over time", "Deals magic damage on the next attack"],
   leona: [
+    "Passive: decaying Armor and Magic Resist at combat start",
     "Deals magic damage to the target",
     "Stuns them",
-    "Passive: decaying Armor and Magic Resist at combat start",
   ],
   ornn: [
-    "Deals magic damage in a cone",
     "Shields self",
+    "Deals magic damage in a cone",
     "Quest: stores damage blocked as Forge Power, doubled at 3-star",
     "Grants an Artifact Anvil at the Forge Power threshold",
   ],
   pebbles: [
-    "Deals magic damage each second while channelling",
-    "Reduces their Magic Resist",
     "Drains its own Mana while channelling",
+    "Deals magic damage each second",
+    "Reduces their Magic Resist",
     "Teal Buff: Mana Regen the longer it channels",
   ],
   rakan: ["Shields self", "Grants the highest-damage ally decaying Attack Speed"],
   "rek-sai": [
-    "Deals magic damage to adjacent enemies",
-    "Stuns them",
     "Passive: heals each second, tripled after a cast",
+    "Stuns adjacent enemies",
+    "Deals magic damage to them",
   ],
   varus: [
-    "Deals physical damage down a line",
+    "Winds up, then fires a piercing arrow",
+    "Deals physical damage down the line",
     "Damage falls off with each enemy pierced",
-    "Winds up before firing",
   ],
   veigar: [
     "Deals magic damage to the target",
@@ -83,28 +82,28 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Permanent Ability Power on kill",
   ],
   xayah: [
-    "Deals physical damage on the next few attacks",
+    "Gains Attack Speed for the next attacks",
+    "Deals physical damage with feathers on those attacks",
     "Reduces Armor",
-    "Gains Attack Speed for those attacks",
   ],
   yorick: [
-    "Deals physical damage to the target",
-    "Heals self",
     "Passive: spawns a Spirit Walker on death",
+    "Heals self",
+    "Deals physical damage to the target",
   ],
 
   // ---------------------------------------------------------------- 2-cost
   alistar: [
-    "Deals magic damage to the target",
-    "Stuns them",
     "Heals self",
     "Cleanses disables",
     "Heals the two lowest-Health allies",
+    "Deals magic damage to the target",
+    "Stuns them",
   ],
-  caitlyn: ["Deals physical damage", "Passive: every third attack becomes a Headshot"],
+  caitlyn: ["Passive: every third attack becomes a Headshot", "Deals physical damage"],
   elise: [
-    "Deals bonus magic damage on attacks in Spider Form",
     "Transforms into a spider, gaining max Health",
+    "Deals bonus magic damage on attacks in Spider Form",
     "Heals on those attacks",
     "Later casts grant decaying Attack Speed",
   ],
@@ -115,17 +114,17 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Purple Buff: stacking Ability Power over time",
   ],
   kayle: [
-    "Deals bonus magic damage on attacks",
-    "Deals magic damage with waves to every other unit hit",
-    "Shreds enemies hit (reduces Magic Resist)",
     "Passive only, with no mana bar",
     "Ascends by star level, stacking four bonuses",
+    "Deals bonus magic damage on attacks",
+    "Shreds enemies hit (reduces Magic Resist)",
+    "Deals magic damage with waves to every other unit hit",
     "Gains infinite range at the last ascension",
   ],
   leblanc: [
+    "Passive: chance to copy an ally after combat, rising with takedowns",
     "Deals magic damage to the target",
     "Deals magic damage to adjacent enemies",
-    "Passive: chance to copy an ally after combat, rising with takedowns",
   ],
   murkwolf: [
     "Deals physical damage to the lowest-Health enemy in range",
@@ -133,21 +132,21 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Grey Buff: Precision and Crit Chance, more when hurt",
   ],
   scuttlecrab: [
+    "Passive: attacks become a dance",
     "Deals physical damage to all adjacent enemies",
-    "Passive: attacks become that dance",
     "Gains Durability while burrowed",
     "Heals over that duration",
     "Green Buff: heals allies who drop low",
   ],
   sejuani: [
+    "Shields self",
     "Deals magic damage in a cone",
     "Deals magic damage in a line",
-    "Shields self",
   ],
   shen: [
-    "Deals bonus magic damage on its next attack and the ally's",
     "Shields self and a nearby damaged ally",
-    "Both gain Attack Speed",
+    "Both gain Attack Speed on their next attacks",
+    "Deals bonus magic damage on those attacks",
   ],
   teemo: [
     "Deals magic damage to the nearest enemies with 2 mushroom clusters",
@@ -160,33 +159,33 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Gains Attack Speed for the rest of combat",
   ],
   yunara: [
+    "Dashes, then launches an orb",
     "Deals physical damage to the target",
-    "Deals physical damage to nearby enemies as the orb splits",
-    "Dashes before launching it",
+    "Deals physical damage to nearby enemies as it splits",
   ],
 
   // ---------------------------------------------------------------- 3-cost
   azir: [
-    "Deals magic damage per soldier attack",
-    "Summons soldiers for the next few attacks",
     "Gains Attack Speed",
+    "Summons soldiers for the next few attacks",
+    "Deals magic damage per soldier attack",
   ],
   cassiopeia: [
-    "Deals magic damage over time",
     "Poisons the target and the nearest unpoisoned enemy",
+    "Deals magic damage over time",
     "Poisons stack",
   ],
-  diana: ["Deals magic damage to the closest enemies", "Shields self"],
+  diana: ["Shields self", "Deals magic damage to the closest enemies"],
   fiddlesticks: [
-    "Deals magic damage to the nearest enemies over time",
-    "Reduces their Magic Resist",
+    "Reduces the nearest enemies' Magic Resist",
+    "Deals magic damage to them over time",
     "Heals for the drain",
   ],
   hecarim: [
-    "Deals magic damage to the nearest enemies",
-    "Stuns them",
     "Gains Armor and Magic Resist for 3 seconds",
     "Heals over that duration",
+    "Deals magic damage to the nearest enemies",
+    "Stuns them",
   ],
   "kha-zix": [
     "Deals magic damage to the farthest enemy in range",
@@ -199,26 +198,25 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Adaptor: damages over time instead",
   ],
   krug: [
-    "Deals damage rolling into the target",
-    "Gains max Health first",
     "Passive: splits into two Kruglettes on death",
+    "Gains max Health",
+    "Deals damage rolling into the target",
     "Slate Buff: shields allies on death",
   ],
   "master-yi": [
-    "Deals bonus damage on Double Strikes (Adaptor)",
-    "Heals from them in that branch",
     "Passive: every third attack is a Double Strike that hits twice",
-    "Adaptor: stacks Attack Speed instead",
     "Gains movement speed on takedown",
+    "Adaptor: Double Strikes stack Attack Speed",
+    "Adaptor: deals bonus damage and heals instead",
   ],
   rammus: [
-    "Deals physical damage when the shield breaks",
     "Taunts nearby enemies onto itself",
     "Gains Shield, Armor and Magic Resist",
+    "Deals physical damage when the shield breaks",
   ],
   raptor: [
-    "Deals physical damage with each Tinybeak attack",
     "Summons 4 untargetable Tinybeaks that copy its attacks",
+    "Deals physical damage with each Tinybeak attack",
     "Orange Buff: physical damage reduces enemy Armor",
   ],
   rengar: [
@@ -226,83 +224,83 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Heals based on their missing Health",
   ],
   tristana: [
-    "Deals physical damage split within 2 hexes when the charge explodes",
+    "Gains infinite range and Attack Speed while the charge ticks",
+    "Deals physical damage split within 2 hexes when it explodes",
     "Damage grows with attacks made while it ticks",
-    "Gains infinite range and Attack Speed while it ticks",
     "The charge jumps to a new target if the carrier dies",
   ],
   vi: [
+    "Passive: heals on attack",
     "Heals self",
     "Gains Attack Speed and Durability",
     "Becomes immune to crowd control",
-    "Passive: heals on attack",
   ],
 
   // ---------------------------------------------------------------- 4-cost
   ahri: [
+    "Targets the most-surrounded enemy in range",
     "Deals magic damage in a hex radius",
     "Damage falls off away from the epicentre",
-    "Targets the most-surrounded enemy in range",
   ],
   amumu: [
-    "Deals magic damage in an area",
+    "Passive: heals each second",
     "Deals magic damage to adjacent enemies each second",
+    "Deals magic damage in an area",
     "Stuns enemies hit",
     "Longer stun if the target is Burning",
-    "Passive: heals each second",
   ],
   "ancient-sentinel": [
-    "Deals magic damage along the fissure",
-    "Knocks up enemies hit",
-    "Mana Reaves them (raises their next cast's cost)",
     "Shields self",
+    "Knocks up enemies in the fissure",
+    "Deals magic damage to them",
+    "Mana Reaves them (raises their next cast's cost)",
     "Blue Buff: allies gain Mana Regen on each cast",
   ],
   aphelios: [
     "Deals physical damage swiping the target repeatedly",
-    "Deals physical damage in a blast split within 2 Hexes",
     "Swipe damage scales with the target's max Health",
+    "Deals physical damage in a blast split within 2 Hexes",
   ],
   brambleback: [
-    "Deals physical damage on the leap to a new target",
-    "Passive: leaps whenever the target dies",
+    "Passive: leaps to the next target when one dies",
+    "Deals physical damage on that leap",
     "Gains Attack Damage and ignores Armor",
     "Red Buff: attacks Burn and heal it",
   ],
   ezreal: [
-    "Deals physical damage to the target",
+    "Blinks away from the target",
+    "Deals physical damage to them",
+    "Gains Attack Speed",
     "Deals physical damage with a piercing blast every 5th cast",
     "Blast damage falls off per enemy pierced",
-    "Gains Attack Speed, which the blast spends",
-    "Blinks away from the target",
   ],
   lillia: [
-    "Deals magic damage to nearby enemies",
-    "Deals bonus max-Health magic damage when they wake",
-    "Sleeps them",
     "Heals self",
+    "Deals magic damage to nearby enemies",
+    "Sleeps them",
+    "Deals bonus max-Health magic damage when they wake",
   ],
   malphite: [
-    "Deals magic damage when the shield breaks",
     "Shields self and becomes petrified",
+    "Deals magic damage when the shield breaks",
   ],
   morgana: [
-    "Deals magic damage to nearby enemies",
-    "Deals magic damage per second in the withering zone",
-    "Curses enemies hit",
-    "Cursed enemies take more damage per curse",
     "Passive: Omnivamp",
+    "Deals magic damage to nearby enemies",
+    "Curses them",
+    "Deals magic damage per second in the withering zone",
+    "Cursed enemies take more damage per curse",
   ],
   nidalee: [
-    "Deals magic damage with javelins on the next attacks",
+    "Gains Attack Speed for the next attacks",
+    "Deals magic damage with javelins",
     "Deals magic damage to the furthest, least-itemised enemy on the 3rd",
-    "Gains Attack Speed for those attacks",
     "Adaptor: becomes a melee cougar instead",
   ],
   sett: [
-    "Deals physical damage in a large cone",
-    "Heals rapidly while winding up",
     "Passive: 100 mana the first time it drops low each combat",
+    "Heals rapidly while winding up",
+    "Deals physical damage in a large cone",
   ],
   sivir: [
     "Deals physical damage to the target",
@@ -315,8 +313,8 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
     "Extra stars only if one has already fallen on them",
   ],
   zyra: [
-    "Deals magic damage with each plant attack",
     "Spawns plants around the battlefield",
+    "Deals magic damage with each plant attack",
   ],
 
   // ---------------------------------------------------------------- 5-cost
@@ -326,62 +324,62 @@ export const ABILITY_SUMMARIES: Record<string, string[]> = {
   ],
   ashe: [
     "Deals physical damage down the longest line of enemies",
+    "Damage falls off per enemy hit",
     "Deals max-Health physical damage per second inside the rift",
     "Slows enemies in the rift (reduces Attack Speed)",
-    "Arrow damage falls off per enemy hit",
   ],
   draven: [
-    "Deals physical damage with two axes to the most-bled enemy",
-    "Deals physical damage over time with bleeds",
-    "Consumes their bleeds, dealing the remainder instantly",
     "Passive: attacks hit random enemies in range",
+    "Deals physical damage over time with bleeds",
     "Chance to hit harder and bleed more instead",
+    "Deals physical damage with two axes to the most-bled enemy",
+    "Consumes their bleeds, dealing the remainder instantly",
   ],
   gnar: [
-    "Deals physical damage to enemies in the area",
-    "Stuns them",
-    "Reduces their Armor and Magic Resist",
     "Passive: builds Rage over time and on attack",
     "Transforms into Mega Gnar, gaining Health",
+    "Deals physical damage to enemies in the area",
+    "Reduces their Armor and Magic Resist",
+    "Stuns them",
     "As Mega: throws the target at the farthest enemy",
   ],
   ivern: [
-    "Deals magic damage to enemies adjacent to shielded allies",
+    "Passive: those shields can critically strike with Precision",
     "Shields allies",
     "Grants them Damage Amp",
-    "Passive: those shields can critically strike with Precision",
+    "Deals magic damage to enemies adjacent to them",
     "Grants stacking Attack Speed after enough casts",
   ],
   kennen: [
+    "Gains Ability Power per Burning enemy while charging",
+    "Shields self",
     "Deals magic damage rushing through a group",
     "Deals magic damage over time with the firestorm",
-    "Shields self",
-    "Gains Ability Power per Burning enemy while charging",
   ],
   lux: [
+    "Passive: allies sharing a trait gain mana on each cast",
     "Deals magic damage to the largest group of enemies",
     "Damage falls off per enemy hit",
-    "Passive: allies sharing a trait gain mana on each cast",
     "Fae Bonus: heals the lowest-Health ally for part of the damage",
   ],
   maokai: [
-    "Deals magic damage to the target",
-    "Deals magic damage with each sapling",
-    "Heals, scaling with missing Health",
     "Passive: saplings jump out as damage is blocked, and on death",
+    "Deals magic damage with each sapling",
+    "Deals magic damage to the target",
+    "Heals, scaling with missing Health",
   ],
   taric: [
-    "Deals bonus magic damage on its next attacks and its pair's",
-    "Heals",
     "Passive: the first time it or its pair drops low, shields nearby allies",
+    "Heals",
+    "Deals bonus magic damage on its next attacks and its pair's",
   ],
   "the-elder-dragon": [
-    "Deals physical damage splashing onto enemies adjacent to the target",
-    "Deals max-Health physical damage per second while Ignited",
-    "Deals physical damage spewing fire in a line on later casts",
+    "Passive: attacks splash onto enemies adjacent to the target",
+    "Becomes untargetable and gains Omnivamp while airborne",
     "Stuns every enemy on landing",
     "Ignites them",
-    "Becomes untargetable and gains Omnivamp while airborne",
+    "Deals max-Health physical damage per second while Ignited",
+    "Deals physical damage spewing fire in a line on later casts",
     "Buff: executes enemies below a Health threshold",
   ],
 };

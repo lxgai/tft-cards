@@ -1,3 +1,4 @@
+import { highlight, type HighlightTone } from "@/lib/cards/highlight";
 import type { CardBlock } from "@/lib/cards/types";
 
 import { Hex } from "./hex";
@@ -123,7 +124,9 @@ function Block({ block }: { block: CardBlock }) {
           {block.items.map((item, i) => (
             <li key={i} className="flex gap-[10px]">
               <span className="hex mt-[7px] h-[9px] w-2 flex-none bg-ink" aria-hidden />
-              <span className="text-[16px] leading-[1.4] text-pretty">{item}</span>
+              <span className="text-[16px] leading-[1.6] text-pretty">
+                <Highlighted text={item} />
+              </span>
             </li>
           ))}
         </ul>
@@ -138,6 +141,30 @@ function Block({ block }: { block: CardBlock }) {
     case "caveat":
       return <p className="text-[12px] font-medium text-trace">{block.text}</p>;
   }
+}
+
+const MARK: Record<HighlightTone, string> = {
+  physical: "bg-mark-physical",
+  magic: "bg-mark-magic",
+  control: "bg-mark-control",
+  utility: "bg-mark-utility",
+};
+
+/** Colours the phrase that carries the mechanic, in place. */
+function Highlighted({ text }: { text: string }) {
+  return (
+    <>
+      {highlight(text).map((segment, i) =>
+        segment.tone ? (
+          <mark key={i} className={MARK[segment.tone]}>
+            {segment.text}
+          </mark>
+        ) : (
+          <span key={i}>{segment.text}</span>
+        ),
+      )}
+    </>
+  );
 }
 
 function Tiers({ items }: { items: Extract<CardBlock, { type: "tiers" }>["items"] }) {

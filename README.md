@@ -18,7 +18,7 @@ the result, and the result is gone when you navigate away. That is deliberate.
 | `npm run build` | Static export to `./out`, then generate `out/sw.js` |
 | `npm run preview` | Build and serve `./out` on :4321 |
 | `npm run serve` | Serve an existing `./out` without rebuilding |
-| `npm test` | 100 unit tests — the data layer and every distractor rule |
+| `npm test` | 105 unit tests — the data layer and every distractor rule |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run inspect` | Print what the data layer made of the source export |
@@ -161,16 +161,17 @@ reference, so a summary that drops something is visibly wrong rather than
 quietly wrong.
 
 **One action, one bullet** — Alistar's roar heals, cleanses, heals two allies,
-damages and stuns, so it is five bullets, not two. They are ordered by class:
-damage, then crowd control, then utility, with shields, heals, buffs and
-passives after. Openers are fixed (`Deals …`, `Stuns …`, `Slows …`) so the
-classes can be checked mechanically.
+damages and stuns, so it is five bullets, not two. They stay in the ability's
+own order; what makes the important parts findable is colour. Physical damage
+is highlighted orange, magic damage purple, crowd control yellow, and utility
+(slows, shreds, wounds, burns) blue, by matching a fixed vocabulary in
+`lib/cards/highlight.ts`.
 
 Being authored, they are the one place the app could invent something, so the
 rules are tests rather than conventions: **no bullet may contain a digit that
 is absent from that champion's ability text**, one to seven bullets, 88
-characters each, classes contiguous and in order, always shorter than the
-source, and every champion covered. `lib/data/ability-summaries.test.ts` checks
+characters each, always shorter than the source, every champion covered, and
+every damaging ability naming its damage in words the highlighter can colour. `lib/data/ability-summaries.test.ts` checks
 all of it against all 65.
 
 To write or revise one, use the `ability-summaries` skill in `.claude/skills/`.
