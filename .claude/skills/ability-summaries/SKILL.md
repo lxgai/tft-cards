@@ -5,7 +5,7 @@ description: Write or revise the hand-written bullet summaries of a champion's a
 
 # Writing ability summaries
 
-`lib/data/ability-summaries.ts` holds two to five bullets per champion. They
+`lib/data/ability-summaries.ts` holds one to seven bullets per champion. They
 are the **only authored content in the app** — everything else is derived from
 `data/`. They exist because the source ability text is a paragraph with its
 numbers stripped out, which is hard to rehearse from; bullets are what you
@@ -21,17 +21,40 @@ The rules below exist to make that impossible, and `npm test` enforces them.
    fine — the source says 100. Writing "60 mana" or "300 damage" is not, and
    the test will fail. If the source stripped a value, describe the shape of
    the effect instead: "more damage if they are below a Health threshold".
-2. **Two to five bullets**, each at most 88 characters, trimmed, no trailing
-   period. Most abilities want three.
-3. **Mechanic, not flavour.** Damage type (magic / physical / true), crowd
-   control, the condition that changes the outcome, the trait-buff rider. Drop
-   the scenery.
-4. **Shorter than the source.** If the bullets are not shorter than the
-   paragraph they replace, they are a transcription, not a summary.
-5. **Every champion has an entry**, keyed by slug (`the-elder-dragon`,
-   `kha-zix`, `master-yi`).
-6. **Lead with the verb.** "Physical damage to the target", not "The champion
-   deals physical damage to the target".
+
+2. **One action, one bullet.** Do not fold two things into one line because
+   they happen in the same sentence. Alistar's roar heals, cleanses disables,
+   heals two allies, deals damage and stuns — that is five bullets. One to
+   seven per champion.
+
+3. **Order by class: damage, then crowd control, then utility.** An ability
+   that deals damage leads with damage. Everything outside those three classes
+   — shields, heals, buffs, passives, transforms, trait-buff riders — may sit
+   wherever it reads best, usually after.
+
+4. **Fixed openers**, so the classes can be checked mechanically:
+
+   | Class | Opens with |
+   |---|---|
+   | damage | `Deals …` |
+   | control | `Stuns`, `Taunts`, `Knocks up`, `Sleeps`, `Charms`, `Disarms` |
+   | utility | `Slows`, `Shreds`, `Wounds`, `Burns`, `Sunders`, `Reduces`, `Ignites`, `Mana Reaves`, `Poisons` |
+
+   Bullets of the same class stay together — no damage, shield, damage.
+
+5. **Use a keyword only where the source uses it.** The glossary words are
+   capitalised game terms with specific meanings. Xayah's source says "reduce
+   Armor by", so the bullet says "Reduces Armor" — not "Sunders". Kayle's says
+   "Shred" with a glossary line, so hers says "Shreds enemies hit (reduces
+   Magic Resist)". Gloss the keyword in parentheses the first time it does
+   real work: Wound, Burn, Shred, Sunder, Slow, Mana Reave.
+
+6. **Short phrases**, at most 88 characters, no trailing period, and the whole
+   summary shorter than the paragraph it replaces. If it is not shorter, it is
+   a transcription.
+
+7. **Lead with the verb**, third person. "Deals physical damage to the target",
+   never "The champion deals physical damage to the target".
 
 ## Worked examples
 
@@ -40,45 +63,52 @@ seconds. Then release a burst of power around them, dealing magic damage to all
 enemies in a Hex radius and% Slowing them for seconds."*
 
 ```
-"Tethers the target for magic damage over time",
-"Then bursts for magic damage in a Hex radius",
-"Slows enemies hit, reducing their Attack Speed",
+"Deals magic damage over time to the tethered target",
+"Deals magic damage in a Hex radius",
+"Slows enemies hit (reduces Attack Speed)",
 ```
 
-Three facts worth recalling: the damage type, that it hits an area, and that it
-slows. The keyword glossary at the end of the source ("Slow: Reduce Attack
-Speed") is folded into the bullet rather than given its own line.
+Two damage bullets because there are two damage events, then the utility. The
+tether itself is delivery, not a separate action, so it rides along in the
+first bullet rather than taking a line of its own.
 
-Rakan — source: *"Gain Shield for seconds. Then grant the ally who has dealt
-the most damage this combat decaying Attack Speed for seconds."*
+Alistar — source: *"Roar, restoring Health, cleansing disables, and healing the
+two lowest percent Health allies for. Then slam the current target, dealing
+magic damage and Stunning them for seconds."*
 
 ```
-"Shields self",
-"Grants the highest-damage ally decaying Attack Speed",
+"Deals magic damage to the target",
+"Stuns them",
+"Heals self",
+"Cleanses disables",
+"Heals the two lowest-Health allies",
 ```
 
-Two bullets, because there are two things it does.
+Five actions, five bullets. Note the source order is heal-first, but damage
+leads and the stun follows it; the rest keep their source order after that.
 
 Bad, for contrast:
 
 ```
-"Gains a shield for 4 seconds"        // 4 is not in the source — invented
-"Rakan shields himself"               // names the champion; lead with the verb
-"Grant the ally who has dealt the most damage this combat decaying Attack Speed for a duration"
-                                      // a transcription, and over 88 chars
+"Gains a shield for 4 seconds"          // 4 is not in the source — invented
+"Rakan shields himself"                 // names the champion; lead with the verb
+"Heals self and cleanses disables"      // two actions in one bullet
+"Stuns the target and deals magic damage"  // control before damage, and folded
 ```
 
 ## Conventions worth matching
 
 - **Passive / Active:** prefix the bullet when the source does — `"Passive:
-  heals on attack"`. Readers scan for it.
-- **Adaptor:** these abilities branch on AD versus AP. Write the shared effect
-  as normal bullets and give the branch its own: `"Adaptor: heavily slows the
-  target"`.
+  heals on attack"`. Readers scan for it. The damage a passive deals still
+  gets a plain `Deals …` bullet up top.
+- **Adaptor:** these abilities branch on AD versus AP. Give the branch its own
+  bullet: `"Adaptor: heavily slows the target"`.
 - **Riftbeast buffs** (Scarlet, Purple, Grey, Teal, Green, Slate, Orange, Red,
   Blue) get their own bullet, named: `"Grey Buff: Precision and Crit Chance,
   more when hurt"`.
 - **Kayle has no mana bar.** Say so — `"Passive only, with no mana bar"`.
+- **Delivery is not an action.** Tethering, leaping, blinking and dashing ride
+  along with the damage they deliver, unless the movement is the point.
 - The champion's own name is allowed where it is genuinely the mechanic's name
   (Krug's "Kruglettes"). `redactedSummary` masks it for any reverse question.
 
@@ -88,10 +118,12 @@ For one champion:
 
 1. Read the source text — `npm run inspect` prints the normalized version, or
    read `data/champions.json` directly.
-2. Edit the entry in `lib/data/ability-summaries.ts`, keyed by slug.
-3. `npm test` — the rules above are all assertions in
-   `lib/data/ability-summaries.test.ts`.
-4. `npm run cards` prints the card the bullets land on, so you can see whether
+2. List the actions before writing any prose. That list is the bullet count.
+3. Sort them: damage, control, utility, then the rest.
+4. Edit the entry in `lib/data/ability-summaries.ts`, keyed by slug.
+5. `npm test` — every rule above is an assertion in
+   `lib/data/ability-summaries.test.ts`, run against all 65 champions.
+6. `npm run cards` prints the card the bullets land on, so you can see whether
    it reads.
 
 For a whole new set, work in cost order and do a tier at a time; the 5-costs
