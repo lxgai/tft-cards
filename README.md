@@ -67,7 +67,7 @@ with the page.
 ```
 data/            champions.json, traits.json (+ augments, wisps for phase 2)
 lib/data/        loading, normalizing, the trait description parser, slugs
-lib/cards/       card templates and the 12 study decks
+lib/cards/       card templates and the study decks
 lib/quiz/        question templates, distractor strategies, grading, session
 components/      hex tiles, card blocks, the two runners, chrome
 app/             routes for Study and Test
@@ -114,7 +114,7 @@ meant to be read uses `#5B564E` — `#A39D92` body text is 2.5:1.
 `scripts/build-sw.mjs` runs after `next build` and writes `out/sw.js`: a service
 worker that precaches every file the export produced, versioned by a hash of
 their contents so a new build supersedes the old cache. With it registered the
-whole app — all 12 decks, all 22 units — opens and runs with no network.
+whole app — all 47 decks, all 22 units — opens and runs with no network.
 
 It caches **the built application only**: HTML, JS, CSS, fonts, the icon. No
 answer, score or deck position is written there or anywhere else. The app is
