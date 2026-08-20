@@ -1,0 +1,1232 @@
+[
+    {
+        "name": "Augmented Power",
+        "tier": 1,
+        "description": "Your next augment is one tier higher."
+    },
+    {
+        "name": "Backup Bows",
+        "tier": 1,
+        "description": "Gain a Recurve Bow. After your champions attack times, get more."
+    },
+    {
+        "name": "Band of Thieves",
+        "tier": 1,
+        "description": "Gain Thief's Gloves."
+    },
+    {
+        "name": "Boxing Lessons",
+        "tier": 1,
+        "description": "Your team gains Health for each ally that starts combat in the front row."
+    },
+    {
+        "name": "Branching Out",
+        "tier": 1,
+        "description": "Gain a random Emblem."
+    },
+    {
+        "name": "Branching Out+",
+        "tier": 1,
+        "description": "Gain a random Emblem and a Reforger."
+    },
+    {
+        "name": "Called Shot",
+        "tier": 1,
+        "description": "Set your win streak to +. Gain gold."
+    },
+    {
+        "name": "Capital Gains I",
+        "tier": 1,
+        "description": "Store gold equal to of the interest you earn. On -, gain all the stored gold. Gain gold now."
+    },
+    {
+        "name": "Caretaker's Ally",
+        "tier": 1,
+        "description": "Gain a random 2-cost champion now. Gain the same one again every time you level up."
+    },
+    {
+        "name": "Carve a Path",
+        "tier": 1,
+        "description": "Gain a B.F. Sword. After your team deals physical damage, gain more."
+    },
+    {
+        "name": "Celestial Blessing I",
+        "tier": 1,
+        "description": "Your team gains Omnivamp. Excess healing is converted to a shield up to Health."
+    },
+    {
+        "name": "Champ Delivery",
+        "tier": 1,
+        "description": "Gain -cost champions. After rounds, gain more."
+    },
+    {
+        "name": "Champ Delivery +",
+        "tier": 1,
+        "description": "Gain -cost champions. After rounds, gain more."
+    },
+    {
+        "name": "Champ Delivery ++",
+        "tier": 1,
+        "description": "Gain -cost champions. After rounds, gain more."
+    },
+    {
+        "name": "Cognitive Tax",
+        "tier": 1,
+        "description": "Gain gold and XP."
+    },
+    {
+        "name": "Cognitive Tax+",
+        "tier": 1,
+        "description": "Gain gold and XP."
+    },
+    {
+        "name": "Component Buffet",
+        "tier": 1,
+        "description": "Whenever you would get a component, gain a component anvil instead. Gain a random component.The anvil offers 4 choices."
+    },
+    {
+        "name": "Continuous Conjuration",
+        "tier": 1,
+        "description": "Gain a Needlessly Large Rod. After your team deals magic damage, gain more."
+    },
+    {
+        "name": "Corrosion",
+        "tier": 1,
+        "description": "Enemies in the first two rows lose Armor and Magic Resist every seconds."
+    },
+    {
+        "name": "Crafted Crafting",
+        "tier": 1,
+        "description": "Whenever you craft a completed item, gain rerolls."
+    },
+    {
+        "name": "Dummify",
+        "tier": 1,
+        "description": "Lose all champions on your board and bench. Gain a Training Dummy with of their combined health. The dummy gains Health per stage. Gain a random non-tank 2-star 2 cost champion."
+    },
+    {
+        "name": "Electrocharge I",
+        "tier": 1,
+        "description": "Every attacks an ally takes, they deal - (based on current Stage) magic damage to nearby enemies ( second cooldown)."
+    },
+    {
+        "name": "Expedition",
+        "tier": 1,
+        "description": "At the start of every round, lose the champion in the rightmost bench slot. After losing gold of champions in this way, gain a powerful reward. Gain a 3-cost champion now."
+    },
+    {
+        "name": "Extra Buckles",
+        "tier": 1,
+        "description": "Gain a Giant's Belt. After your team takes damage, get more."
+    },
+    {
+        "name": "Feeling Lucky",
+        "tier": 1,
+        "description": "Gain gold, then flip a coin. If heads, gain more gold."
+    },
+    {
+        "name": "Find Your Center",
+        "tier": 1,
+        "description": "Your champion that starts combat in the center of the front row gains Damage Amp and max Health."
+    },
+    {
+        "name": "Firesale",
+        "tier": 1,
+        "description": "Each round, steal a random -cost or lower champion from the shop. Gain gold."
+    },
+    {
+        "name": "Flame On",
+        "tier": 1,
+        "description": "The Inferno champion that dealt the most damage last combat is On Fire, gaining Attack Speed. Gain a Varus and an Akali."
+    },
+    {
+        "name": "Flowing Tears",
+        "tier": 1,
+        "description": "Gain a Tear of the Goddess. After your team spends Mana, gain more."
+    },
+    {
+        "name": "Focused Fire",
+        "tier": 1,
+        "description": "Your team gains Attack Damage. Every seconds, they gain more."
+    },
+    {
+        "name": "Forge A Friend",
+        "tier": 1,
+        "description": "The next -cost champion you buy is -star. Gain gold."
+    },
+    {
+        "name": "Future Focused",
+        "tier": 1,
+        "description": "Your Tactician loses Health, but after player combats, gain 4-cost champions and gold."
+    },
+    {
+        "name": "Glass Cannon I",
+        "tier": 1,
+        "description": "Allies that start combat in the back row begin combat at Health but gain Damage Amp."
+    },
+    {
+        "name": "Good For Something I",
+        "tier": 1,
+        "description": "Champions that aren't holding items have a chance to drop gold on death."
+    },
+    {
+        "name": "Group Hug I",
+        "tier": 1,
+        "description": "Combat start: Allies grant other adjacent allies Armor and Magic Resist. This effect stacks."
+    },
+    {
+        "name": "Healing Orbs I",
+        "tier": 1,
+        "description": "When an enemy dies, the nearest ally is healed for."
+    },
+    {
+        "name": "Iron Assets",
+        "tier": 1,
+        "description": "Gain a component anvil and gold."
+    },
+    {
+        "name": "Item Grab Bag I",
+        "tier": 1,
+        "description": "Gain 1 random completed item."
+    },
+    {
+        "name": "Kick Start",
+        "tier": 1,
+        "description": "Gain a random -star -cost champion and gold."
+    },
+    {
+        "name": "Kingslayer",
+        "tier": 1,
+        "description": "After winning player combat, gain gold. If they had more health than you, gain Gold instead. Gain gold."
+    },
+    {
+        "name": "Late Game Specialist",
+        "tier": 1,
+        "description": "When you reach Level, gain gold."
+    },
+    {
+        "name": "Latent Forge",
+        "tier": 1,
+        "description": "After player combats, gain an Artifact anvil."
+    },
+    {
+        "name": "Loaded Dice",
+        "tier": 1,
+        "description": "Your dice always roll 6 and your coins always flip heads.\\n \\n \\n \\n Roll a die and gain gold equal to the number rolled. Then flip a coin and gain gold if you flip heads."
+    },
+    {
+        "name": "Makeshift Armor I",
+        "tier": 1,
+        "description": "Allies without items equipped gain Armor and Magic Resist."
+    },
+    {
+        "name": "Missed Connections",
+        "tier": 1,
+        "description": "Gain a copy of each 1-cost champion."
+    },
+    {
+        "name": "One Two Three",
+        "tier": 1,
+        "description": "Gain 1 1-cost champion, 1 2-cost champion, and 1 3-cost champion."
+    },
+    {
+        "name": "One, Two, Five!",
+        "tier": 1,
+        "description": "Gain 1 random component, gold, and 1 random 5-cost champion"
+    },
+    {
+        "name": "Pandora's Items I",
+        "tier": 1,
+        "description": "Round start: items on your bench are randomized.\\n \\n \\n \\n Gain random component."
+    },
+    {
+        "name": "Partial Ascension",
+        "tier": 1,
+        "description": "After seconds of combat, your units gain Damage Amp."
+    },
+    {
+        "name": "Patience Is A Virtue",
+        "tier": 1,
+        "description": "Each round, gain free rerolls if you did not buy a champion last round."
+    },
+    {
+        "name": "Quick Streaks",
+        "tier": 1,
+        "description": "You gain twice as much progress towards win and loss streaks. Gain gold."
+    },
+    {
+        "name": "Recombobulator",
+        "tier": 1,
+        "description": "Champions on your board permanently transform into random champions 1 cost tier higher (max 5). Gain Magnetic Removers."
+    },
+    {
+        "name": "Residual Magic",
+        "tier": 1,
+        "description": "Your team gains Health. Each time you purchase a Wisp, increase this by."
+    },
+    {
+        "name": "Residual Magic +",
+        "tier": 1,
+        "description": "Your team gains Health. Each time you purchase a Wisp, increase this by."
+    },
+    {
+        "name": "Residual Magic ++",
+        "tier": 1,
+        "description": "Your team gains Health. Each time you purchase a Wisp, increase this by."
+    },
+    {
+        "name": "Rolling For Days",
+        "tier": 1,
+        "description": "Gain free Shop rerolls."
+    },
+    {
+        "name": "Silver Spoon",
+        "tier": 1,
+        "description": "Gain XP"
+    },
+    {
+        "name": "Slice of Life",
+        "tier": 1,
+        "description": "Twice per stage, gain a random champion. Its cost increases by Stage. This effect ends after receiving -cost champion."
+    },
+    {
+        "name": "Slightly Magic Roll",
+        "tier": 1,
+        "description": "Roll a die. Gain rewards based on the number rolled."
+    },
+    {
+        "name": "Small Grab Bag",
+        "tier": 1,
+        "description": "Gain random item components."
+    },
+    {
+        "name": "Stand United",
+        "tier": 1,
+        "description": "Your units gain Attack Damage and Ability Power for each non-unique Trait active across your team."
+    },
+    {
+        "name": "Team Building",
+        "tier": 1,
+        "description": "Gain a Lesser Champion Duplicator. Gain another after player combats.\\n \\n \\n \\n This item allows you to copy a 3-cost or less champion."
+    },
+    {
+        "name": "The Tower",
+        "tier": 1,
+        "description": "Gain a giant Training Dummy. Every seconds, it zaps the nearest enemies dealing max Health true damage."
+    },
+    {
+        "name": "Twin Guardians",
+        "tier": 1,
+        "description": "If you have exactly allies in your first row, grant them Health, Armor, and Magic Resist."
+    },
+    {
+        "name": "Verticality I",
+        "tier": 1,
+        "description": "Champions gain Attack Damage, Ability Power, Armor, and Magic Resist for each ally that shares a trait with them."
+    },
+    {
+        "name": "Weight The Worth",
+        "tier": 1,
+        "description": "Whenever you 3-star a champion, gain a copy of them each round for the rest of the game. Gain a Lesser Champion Duplicator."
+    },
+    {
+        "name": "Wisp Rebate",
+        "tier": 1,
+        "description": "Each time you purchase a Wisp, gain gold. Gain gold now."
+    },
+    {
+        "name": "Wisp Rebate +",
+        "tier": 1,
+        "description": "Each time you purchase a Wisp, gain gold. Gain gold now."
+    },
+    {
+        "name": "Young and Wild and Free",
+        "tier": 1,
+        "description": "You can always move freely on Carousel rounds. Gain gold."
+    },
+    {
+        "name": "Advanced Loan",
+        "tier": 2,
+        "description": "Gain Gold. Your next augment is one tier lower."
+    },
+    {
+        "name": "Advanced Loan+",
+        "tier": 2,
+        "description": "Gain Gold. Your next augment is one tier lower."
+    },
+    {
+        "name": "Arcane Viktor-y",
+        "tier": 2,
+        "description": "After seconds of combat, stun the enemy team for seconds. Repeat this after seconds of combat.\\n \\n \\n \\n TFT Macao Open, 2024"
+    },
+    {
+        "name": "Ascension",
+        "tier": 2,
+        "description": "After seconds of combat, your units gain Damage Amp."
+    },
+    {
+        "name": "Backline Blueprint",
+        "tier": 2,
+        "description": "Gain a 3-cost non-Tank champion and an Emblem that matches their last-listed trait."
+    },
+    {
+        "name": "Beast Within",
+        "tier": 2,
+        "description": "Primal grants an additional Blessing. Gain a Vi."
+    },
+    {
+        "name": "Big Grab Bag",
+        "tier": 2,
+        "description": "Gain 3 random components, gold, and 1 Reforger."
+    },
+    {
+        "name": "Birthday Reunion",
+        "tier": 2,
+        "description": "Gain 3 Gold. At Level, gain a random -star -cost champion. At Level, gain a Thief's Gloves. At Level, gain a random -star -cost champion.\\n \\n \\n \\n Inkborn Fables Tactician's Crown, 2024"
+    },
+    {
+        "name": "Blossom's Call",
+        "tier": 2,
+        "description": "When you buy a Wisp, gain a random Blossom champion based on the Wisp's cost. Gain 3 Blossom champions."
+    },
+    {
+        "name": "Bodyguard Training",
+        "tier": 2,
+        "description": "Allies gain Armor and Magic Resist, increased by per player level.\\n \\n \\n \\n Gizmos & Gadgets Championship, 2022"
+    },
+    {
+        "name": "Bonus Gift",
+        "tier": 2,
+        "description": "Whenever you open a loot orb, you have a chance to gain a gray loot orb. Gain gray loot orbs."
+    },
+    {
+        "name": "Bonus Gift +",
+        "tier": 2,
+        "description": "Whenever you open a loot orb, you have a chance to gain a gray loot orb. Gain gray loot orbs."
+    },
+    {
+        "name": "Booster Pack",
+        "tier": 2,
+        "description": "Gain gold of random champions. (At least one -cost guaranteed!)"
+    },
+    {
+        "name": "Booster Pack+",
+        "tier": 2,
+        "description": "Gain gold of random champions. (At least one -cost guaranteed!)"
+    },
+    {
+        "name": "Booster Pack++",
+        "tier": 2,
+        "description": "Gain gold of random champions. (At least one -cost guaranteed!)"
+    },
+    {
+        "name": "Bronze For Life I",
+        "tier": 2,
+        "description": "Your team gains Damage Amp for each Bronze-tier trait."
+    },
+    {
+        "name": "Calculated Loss",
+        "tier": 2,
+        "description": "After losing your combat, gain gold and a free Shop reroll."
+    },
+    {
+        "name": "Capital Gains II",
+        "tier": 2,
+        "description": "Store gold equal to of the interest you earn. On -, gain all the stored gold. Gain gold now."
+    },
+    {
+        "name": "Caretaker's Favor",
+        "tier": 2,
+        "description": "Gain a component anvil when you reach level 5, 6, 7, and 8.\\n \\n \\n \\n Component anvils offer 4 choices."
+    },
+    {
+        "name": "Celestial Blessing II",
+        "tier": 2,
+        "description": "Your team gains Omnivamp. Excess healing is converted to a shield up to Health."
+    },
+    {
+        "name": "Chosen of the Sun",
+        "tier": 2,
+        "description": "Gain a Leona, a Kayle, and a Sejuani. Leona gains permanent max Health each round, increased by for each unique 3-star champion fielded."
+    },
+    {
+        "name": "Clear Mind",
+        "tier": 2,
+        "description": "If there are no champions on your bench at the end of player combat, gain XP."
+    },
+    {
+        "name": "Clockwork Accelerator",
+        "tier": 2,
+        "description": "Your team gains Attack Speed every seconds in combat."
+    },
+    {
+        "name": "Cluttered Mind",
+        "tier": 2,
+        "description": "Gain -cost champions now. If your bench is full at the end of player combat, gain XP."
+    },
+    {
+        "name": "Cognitive Overload",
+        "tier": 2,
+        "description": "Gain gold, -star -cost champion, -cost champion, -cost champions, XP, and Shop reroll."
+    },
+    {
+        "name": "Construct a Companion",
+        "tier": 2,
+        "description": "The next -cost champion you buy is -star. Gain gold."
+    },
+    {
+        "name": "Consuming Flora",
+        "tier": 2,
+        "description": "Gain a Flora Fatalis emblem. The champion holding the emblem gains double benefits from the Flora Fatalis trait and gains Mana Regen."
+    },
+    {
+        "name": "Cooking Pot",
+        "tier": 2,
+        "description": "At the start of each turn, all units holding a Frying Pan or Spatula item grant the nearest champion permanent Health. Gain a Frying Pan."
+    },
+    {
+        "name": "Coven Acolyte",
+        "tier": 2,
+        "description": "When you choose to continue gathering Coven essence, heal Tactician health. Gain a Camille, an Elise, and a Caitlyn."
+    },
+    {
+        "name": "Cry Me A River",
+        "tier": 2,
+        "description": "Gain a Tear of the Goddess. Your team gains Mana Regen. After seconds in combat, increase this to."
+    },
+    {
+        "name": "Cybernetic Implants II",
+        "tier": 2,
+        "description": "Your champions holding an item gain Health and Attack Damage."
+    },
+    {
+        "name": "Cybernetic Uplink II",
+        "tier": 2,
+        "description": "Your champions holding an item gain Health and Mana Regen. Gain a Tear of the Goddess."
+    },
+    {
+        "name": "Dark Ritual",
+        "tier": 2,
+        "description": "Converting Coven Essence to rewards grants Coven champions Ability Power instead of loot. Gain a Camille, an Elise, and a Caitlyn."
+    },
+    {
+        "name": "Double Trouble",
+        "tier": 2,
+        "description": "When you field exactly 2 copies of a champion, they both gain Attack Damage and Ability Power and Armor, and Magic Resist. When you 3-star, gain a 2-star copy."
+    },
+    {
+        "name": "Duo Queue",
+        "tier": 2,
+        "description": "Gain 2 random 5-cost champions and 2 copies of a random component"
+    },
+    {
+        "name": "Early Learnings",
+        "tier": 2,
+        "description": "Your team gains% Attack Damage & Ability Power. This increases by% after each player combat. 1-cost champions gain double.\\n \\n TFT Vegas Open, 2023"
+    },
+    {
+        "name": "Electrocharge II",
+        "tier": 2,
+        "description": "Every attacks an ally takes, they deal - (based on current Stage) magic damage to nearby enemies ( second cooldown)."
+    },
+    {
+        "name": "Embiggen",
+        "tier": 2,
+        "description": "Your Fae pixies are larger and grant more Attack Damage and Ability Power. Gain a Xayah and a Rakan."
+    },
+    {
+        "name": "Epic Rolldown",
+        "tier": 2,
+        "description": "When you reach Level, gain Shop rerolls.\\n \\n \\n \\n Runeterra Reforged Championship, 2023"
+    },
+    {
+        "name": "Epoch",
+        "tier": 2,
+        "description": "Now, and at the start of every stage, gain XP and free rerolls."
+    },
+    {
+        "name": "Epoch+",
+        "tier": 2,
+        "description": "Now, and at the start of every stage, gain XP and free rerolls."
+    },
+    {
+        "name": "Exclusive Customization",
+        "tier": 2,
+        "description": "Gain a Lucky Item Chest, a Magnetic Remover and gold."
+    },
+    {
+        "name": "Explosive Growth",
+        "tier": 2,
+        "description": "Now and at the start of the next rounds, gain XP."
+    },
+    {
+        "name": "Explosive Growth+",
+        "tier": 2,
+        "description": "Now and at the start of the next rounds, gain XP."
+    },
+    {
+        "name": "FOURcing",
+        "tier": 2,
+        "description": "Gain a random 4-cost champion. For each item equipped to that champion, your team gains health."
+    },
+    {
+        "name": "Frontline Foundation",
+        "tier": 2,
+        "description": "Gain a 2-star 1-cost Tank champion and an Emblem that matches their last-listed trait."
+    },
+    {
+        "name": "Gain 21 Gold",
+        "tier": 2,
+        "description": "Gain gold."
+    },
+    {
+        "name": "Gilded Steel",
+        "tier": 2,
+        "description": "Gain two 5-cost champions. If you field at least one 5-cost champion, your 1 to 4-cost champions gain Durability.\\n \\n \\n \\n K.O. Coliseum Tactician's Crown, 2025"
+    },
+    {
+        "name": "Glass Cannon II",
+        "tier": 2,
+        "description": "Allies that start combat in the back row begin combat at Health but gain Damage Amp."
+    },
+    {
+        "name": "Group Hug II",
+        "tier": 2,
+        "description": "Combat start: Allies grant other adjacent allies Armor and Magic Resist. This effect stacks."
+    },
+    {
+        "name": "Hard Bargain",
+        "tier": 2,
+        "description": "You cannot choose your Carousel rewards. Gain an additional player health and gold each carousel round.\\n \\n When you do not pick a Carousel Reward, you are given an unpicked champion and the item it carries."
+    },
+    {
+        "name": "Healing Orbs II",
+        "tier": 2,
+        "description": "When an enemy dies, the nearest ally is healed for."
+    },
+    {
+        "name": "Heart of Steel",
+        "tier": 2,
+        "description": "Gain a Steadfast Heart. Every seconds of combat its holder survives, Steadfast Heart gains additional permanent max Health."
+    },
+    {
+        "name": "Heroic Grab Bag",
+        "tier": 2,
+        "description": "Gain 2 Lesser Champion Duplicators. Gain Gold"
+    },
+    {
+        "name": "Heroic Grab Bag+",
+        "tier": 2,
+        "description": "Gain 2 Lesser Champion Duplicators. Gain Gold"
+    },
+    {
+        "name": "Heroic Grab Bag++",
+        "tier": 2,
+        "description": "Gain 2 Lesser Champion Duplicators. Gain Gold"
+    },
+    {
+        "name": "Hustler",
+        "tier": 2,
+        "description": "You no longer gain interest but gain gold at the start of every player combat round. Gain gold now.\\n \\n \\n \\n Interest is extra gold you gain per g saved."
+    },
+    {
+        "name": "Infinity Protection",
+        "tier": 2,
+        "description": "Gain gold now. On Stage -, gain an Infinity Force. Infinity Force gives allies in the same row a Health shield.\\n \\n \\n \\n Monsters Attack Championship, 2023"
+    },
+    {
+        "name": "Investment Strategy I",
+        "tier": 2,
+        "description": "Your champions gain permanent max health per interest you earn."
+    },
+    {
+        "name": "Item Extraction",
+        "tier": 2,
+        "description": "The first times you sacrifice a champion in the Eldritch hex, gain a copy of a random component they're holding. Gain a Veigar, a Rek'Sai, and item removers."
+    },
+    {
+        "name": "Jeweled Lotus I",
+        "tier": 2,
+        "description": "Your team gains% Critical Strike Chance and Precision\\n \\n \\n \\n Precision: Ability damage can critically strike. Additional Precision grants 10% Critical Strike Damage."
+    },
+    {
+        "name": "Jungle Pathing",
+        "tier": 2,
+        "description": "Gain a Pebbles, a Cinderling, a Scuttle Crab, and a Murkwolf. Each time you level up, gain a new Riftbeast and gold."
+    },
+    {
+        "name": "Know Your Enemy",
+        "tier": 2,
+        "description": "You can see who you will fight next. Your team gains Damage Amp, increased to if you and your opponent have any of the same traits active."
+    },
+    {
+        "name": "Late Game Scaling",
+        "tier": 2,
+        "description": "Gain XP at the start of player combat rounds. Your 5-cost champions gain Health and Attack Speed.\\n \\n \\n \\n Cyber City Tactician's Crown, 2025"
+    },
+    {
+        "name": "Legion Of Threes",
+        "tier": 2,
+        "description": "Gain a random Emblem. Your 3-cost champions and all allies equipped with an Emblem gain Health and Attack Speed.\\n \\n \\n \\n Reckoning Championship, 2021"
+    },
+    {
+        "name": "Magic Roll",
+        "tier": 2,
+        "description": "Roll 3 dice. Gain rewards based on their total.\\n \\n \\n \\n Reward: [Placeholder]"
+    },
+    {
+        "name": "Makeshift Armor II",
+        "tier": 2,
+        "description": "Allies without items equipped gain Armor and Magic Resist."
+    },
+    {
+        "name": "Malicious Monetization",
+        "tier": 2,
+        "description": "Gain gold. For the next rounds, enemy champions drop gold when killed."
+    },
+    {
+        "name": "Max Build",
+        "tier": 2,
+        "description": "Gain free Shop rerolls. When you reach level, gain free Shop rerolls and a Champion Duplicator.\\n \\n \\n \\n Galaxies Championship, 2020"
+    },
+    {
+        "name": "Money Hungry",
+        "tier": 2,
+        "description": "Gain gold now, then gold at the start of every stage. Picking up gold makes your Tactician larger."
+    },
+    {
+        "name": "Money Hungry+",
+        "tier": 2,
+        "description": "Gain gold now, then gold at the start of every stage. Picking up gold makes your Tactician larger."
+    },
+    {
+        "name": "NO SCOUT NO PIVOT",
+        "tier": 2,
+        "description": "Champions that fight in player combat cannot be benched or sold. Your team gains Health, and Attack Damage and Ability Power after player combat."
+    },
+    {
+        "name": "Nature's Shelter",
+        "tier": 2,
+        "description": "Champions that start combat adjacent to an Elderwood plant gain Attack Speed and heal of their maximum Health every seconds. Gain 3 Elderwood champions."
+    },
+    {
+        "name": "Omega Riftbeast",
+        "tier": 2,
+        "description": "You can now choose a second Alpha Riftbeast. Gain 3 Riftbeasts."
+    },
+    {
+        "name": "Pandora's Items II",
+        "tier": 2,
+        "description": "Round start: items on your bench are randomized.\\n \\n \\n \\n Gain random components."
+    },
+    {
+        "name": "Patient Study",
+        "tier": 2,
+        "description": "After player combat, gain XP if you won or XP if you lost."
+    },
+    {
+        "name": "Pilfer",
+        "tier": 2,
+        "description": "Each round, gain a 1-star copy of the first champion you killed last combat. The first time you gain gold worth of champions in this way, gain a Thief's Gloves."
+    },
+    {
+        "name": "Portable Forge",
+        "tier": 2,
+        "description": "Choose 1 of 4 Artifacts. Artifacts are more powerful items with a unique effect."
+    },
+    {
+        "name": "Precision and Grace",
+        "tier": 2,
+        "description": "At the start of combat, allies gain Attack Speed for seconds. On takedown, allies dash to their next target and gain this bonus again."
+    },
+    {
+        "name": "Promised Protection",
+        "tier": 2,
+        "description": "Gain a Protector's Vow. Protector's Vow grants its holder additional Mana from all sources."
+    },
+    {
+        "name": "Razor's Edge",
+        "tier": 2,
+        "description": "Gain a 2-star 2-cost champion and Item Removers. After winning a player combat, gain gold per item component on your item bench."
+    },
+    {
+        "name": "Replication",
+        "tier": 2,
+        "description": "Choose 1 of 3 components. For the next rounds, gain a copy of that component."
+    },
+    {
+        "name": "Salvage Bin",
+        "tier": 2,
+        "description": "Gain 1 random completed item now, and 1 component after player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems)."
+    },
+    {
+        "name": "Salvage Bin+",
+        "tier": 2,
+        "description": "Gain 1 random completed item now, and 1 component after player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems)."
+    },
+    {
+        "name": "Seraphim's Staff",
+        "tier": 2,
+        "description": "Gain an Archangel's Staff. Archangel's Staff grants additional Mana Regen if its holder has or more Ability Power."
+    },
+    {
+        "name": "Slammin'",
+        "tier": 2,
+        "description": "Gain gold. After each player combat, if there are no items on your bench (other than consumables), gain XP."
+    },
+    {
+        "name": "Slammin'+",
+        "tier": 2,
+        "description": "Gain gold and XP now. After each player combat, if there are no items on your bench (other than consumables), gain XP."
+    },
+    {
+        "name": "Small Furry Friend",
+        "tier": 2,
+        "description": "While Sprykin is active, gain a second BFF summon that is as powerful. Gain 3 Sprykin champions."
+    },
+    {
+        "name": "Solo Leveling",
+        "tier": 2,
+        "description": "For the next combats, your team size is, but the champion you field has massively increased stats. Gain XP for every kill they get. Afterwards, gain item components."
+    },
+    {
+        "name": "Solo Plate",
+        "tier": 2,
+        "description": "Gain a Gargoyle Stoneplate. Combat start: Allies holding Gargoyle Stoneplate gain max Health if they're the only one in their row."
+    },
+    {
+        "name": "Speedy Double Kill",
+        "tier": 2,
+        "description": "Gain a Guinsoo's Rageblade. When players are eliminated, gain gold.\\n \\n \\n \\n Fates Championship, 2021"
+    },
+    {
+        "name": "Spirit Of Redemption",
+        "tier": 2,
+        "description": "Gain a Spirit Visage. Every seconds, Spirit Visage heals allies within hex for of their missing Health."
+    },
+    {
+        "name": "Spreading Roots",
+        "tier": 2,
+        "description": "Gain random Emblems and gold."
+    },
+    {
+        "name": "Spreading Roots+",
+        "tier": 2,
+        "description": "Gain random Emblems, a Reforger, and gold."
+    },
+    {
+        "name": "Staffsmith",
+        "tier": 2,
+        "description": "Gain random completed items that build from Needlessly Large Rod."
+    },
+    {
+        "name": "Sun and Moon",
+        "tier": 2,
+        "description": "Your Lunar champions gain Health and Damage Amp for each unique Solar champion fielded. Gain a 2-star Leona, a Kayle, and an Aphelios."
+    },
+    {
+        "name": "Swordsmith",
+        "tier": 2,
+        "description": "Gain random completed items that build from B.F. Sword."
+    },
+    {
+        "name": "The Golden Dragon",
+        "tier": 2,
+        "description": "Gain a Mogul's Mail. Champions holding Mogul's Mail take up + team slot but gain Health and Durability."
+    },
+    {
+        "name": "Time Skip",
+        "tier": 2,
+        "description": "Disable your Shop for the next rounds. Then gain XP."
+    },
+    {
+        "name": "Tons of Stats!",
+        "tier": 2,
+        "description": "Your team gains Health, Attack Damage, Ability Power, Armor, Magic Resist, Attack Speed, and Mana."
+    },
+    {
+        "name": "Trade Sector",
+        "tier": 2,
+        "description": "Gain a free Shop reroll every round. Gain gold."
+    },
+    {
+        "name": "Trade Sector +",
+        "tier": 2,
+        "description": "Gain a free Shop reroll every round. Gain gold."
+    },
+    {
+        "name": "Two Much Value",
+        "tier": 2,
+        "description": "Gain reroll for every unique 2-cost champions fielded last player combat. Gain 2-cost champions."
+    },
+    {
+        "name": "URF",
+        "tier": 2,
+        "description": "Gain a Spatula. Champions holding Spatula or Frying Pan items gain Attack Speed and Mana Regen"
+    },
+    {
+        "name": "Verticality II",
+        "tier": 2,
+        "description": "Champions gain Attack Damage, Ability Power, Armor, and Magic Resist for each ally that shares a trait with them."
+    },
+    {
+        "name": "Warpath",
+        "tier": 2,
+        "description": "Gain a 2-star 2-cost champion. After dealing player damage, gain a chest of high cost champions and items."
+    },
+    {
+        "name": "Worth the Wait",
+        "tier": 2,
+        "description": "Gain a random 1-cost champion. Gain another copy of them at the start of each round for the rest of the game."
+    },
+    {
+        "name": "Woven Magic",
+        "tier": 2,
+        "description": "Gain a random item component. Every Mana your team spends grants an additional component (max: |)."
+    },
+    {
+        "name": "Band of Thieves II",
+        "tier": 3,
+        "description": "Gain Thief's Gloves. After player combats, gain another."
+    },
+    {
+        "name": "Band of Thieves II+",
+        "tier": 3,
+        "description": "Gain Thief's Gloves. After player combats, gain another."
+    },
+    {
+        "name": "Band of Thieves II++",
+        "tier": 3,
+        "description": "Gain Thief's Gloves. After player combats, gain another."
+    },
+    {
+        "name": "Baron's Lair",
+        "tier": 3,
+        "description": "Gain a random Tank item. After seconds of combat, your team gains bonus Attack Damage and Ability Power every second for the rest of combat.\\n \\n \\n \\n TFT Paris Open, 2025"
+    },
+    {
+        "name": "Belt Overflow",
+        "tier": 3,
+        "description": "Gain Giant's Belts. Your Giant's Belts grant + bonus Health."
+    },
+    {
+        "name": "Birthday Present",
+        "tier": 3,
+        "description": "Gain a 2-star champion and gold each time you level up. The champion's cost tier is your level minus (max: -cost)"
+    },
+    {
+        "name": "Bronze For Life II",
+        "tier": 3,
+        "description": "Your team gains Damage Amp and Armor and Magic Resist for each Bronze-tier trait."
+    },
+    {
+        "name": "Buried Treasures III",
+        "tier": 3,
+        "description": "Gain a random item component now and at the start of the next rounds."
+    },
+    {
+        "name": "Call To Chaos",
+        "tier": 3,
+        "description": "Gain a powerful and random reward.\\n \\n \\n \\n Reward:???"
+    },
+    {
+        "name": "Celestial Blessing III",
+        "tier": 3,
+        "description": "Your team gains Omnivamp. Excess healing is converted to a shield up to Health."
+    },
+    {
+        "name": "Comeback Story",
+        "tier": 3,
+        "description": "Your team gains Health and Attack Speed per missing player Health."
+    },
+    {
+        "name": "Commerce Core",
+        "tier": 3,
+        "description": "Gain free Shop rerolls now and every round for the rest of the game."
+    },
+    {
+        "name": "Component Quest",
+        "tier": 3,
+        "description": "Gain a random component and gold. The next 7 times you win a player combat, gain a different random component. Afterwards, gain a Spatula."
+    },
+    {
+        "name": "Coronation",
+        "tier": 3,
+        "description": "Gain a Tactician's Crown. Tactician's Crown, Cape, and Shield grant the holder Attack Speed, Attack Damage, and Ability Power."
+    },
+    {
+        "name": "Cursed Crown",
+        "tier": 3,
+        "description": "Gain + max team size and your team gains Durability, but you take double player damage when you lose a player combat."
+    },
+    {
+        "name": "Deadlier Blades",
+        "tier": 3,
+        "description": "Gain a Deathblade. Deathblades permanently gain Attack Damage whenever their holders score a takedown."
+    },
+    {
+        "name": "Expected Unexpectedness",
+        "tier": 3,
+        "description": "Now and at the start of the next 2 stages, roll 3 dice. Gain various rewards based on their total."
+    },
+    {
+        "name": "Flexible",
+        "tier": 3,
+        "description": "Gain 1 random Emblem. At the start of every Stage, gain a random Emblem. Your team gains Health for each Emblem they are holding."
+    },
+    {
+        "name": "Forged In Strength",
+        "tier": 3,
+        "description": "Gain random Artifact. When you drop below Health, gain more random Artifacts.\\n \\n \\n \\n Remix Rumble Championship, 2023"
+    },
+    {
+        "name": "Giant and Mighty",
+        "tier": 3,
+        "description": "Your team becomes large, gaining Health and max Health."
+    },
+    {
+        "name": "Going Long",
+        "tier": 3,
+        "description": "You no longer gain interest. Gain gold now. Round start: gain XP.\\n \\n \\n \\n Interest is extra gold you gain per g saved."
+    },
+    {
+        "name": "Golden Gamble",
+        "tier": 3,
+        "description": "Gain gold and flip a coin. If heads, gain a Radiant Lucky Item Chest. If tails, gain Completed Item anvils."
+    },
+    {
+        "name": "Golden Gamble +",
+        "tier": 3,
+        "description": "Gain gold and flip a coin. If heads, gain a Radiant Lucky Item Chest. If tails, gain Completed Item anvils."
+    },
+    {
+        "name": "Golden Gamble ++",
+        "tier": 3,
+        "description": "Gain gold and flip a coin. If heads, gain a Radiant Lucky Item Chest. If tails, gain Completed Item anvils."
+    },
+    {
+        "name": "Hard Commit",
+        "tier": 3,
+        "description": "Gain a random emblem. Now and at the start of each stage, gain a 1-star champion of that trait with a cost equal to the Stage (max 5) and 3 gold."
+    },
+    {
+        "name": "Hedge Fund",
+        "tier": 3,
+        "description": "Gain gold. Your max interest is increased to 10."
+    },
+    {
+        "name": "Hold the Line",
+        "tier": 3,
+        "description": "Allies in your back 2 rows gain Ability Power and Attack Damage for each ally that starts combat in your front row."
+    },
+    {
+        "name": "Invested+",
+        "tier": 3,
+        "description": "Gain 26 gold. At the start of each round, gain 1 Shop reroll for every 10 gold above 50 (max 80 gold)."
+    },
+    {
+        "name": "Invested++",
+        "tier": 3,
+        "description": "Gain 45 gold. At the start of each round, gain 1 Shop reroll for every 10 gold above 50 (max 80 gold)."
+    },
+    {
+        "name": "Investment Strategy II",
+        "tier": 3,
+        "description": "Your champions gain permanent max health per interest you earn. Your max interest is increased by. Gain gold."
+    },
+    {
+        "name": "Jeweled Lotus II",
+        "tier": 3,
+        "description": "Your team gains% Critical Strike Chance,% Critical Strike Damage, and Precision.\\n \\n \\n \\n Precision: Ability damage can critically strike. Additional Precision grants 10% Critical Strike Damage."
+    },
+    {
+        "name": "Level Up!",
+        "tier": 3,
+        "description": "When you buy XP, gain an additional. Gain immediately."
+    },
+    {
+        "name": "Living Forge",
+        "tier": 3,
+        "description": "Gain an Artifact Anvil now and after every player combats."
+    },
+    {
+        "name": "Lucky Gloves",
+        "tier": 3,
+        "description": "Thief's Gloves will always give your champions ideal items. Gain Sparring Gloves."
+    },
+    {
+        "name": "Lucky Gloves+",
+        "tier": 3,
+        "description": "Thief's Gloves will always give your champions ideal items. Gain Sparring Gloves now, then another after player combats."
+    },
+    {
+        "name": "Luxury Subscription",
+        "tier": 3,
+        "description": "Gain a package containing a -cost champion, a 2-star -cost champion, and gold.\\n \\n \\n \\n At the start of the next stages, gain the package again."
+    },
+    {
+        "name": "Min-Max",
+        "tier": 3,
+        "description": "Gain a Golden Item Remover and 4 random components."
+    },
+    {
+        "name": "Money Monsoon",
+        "tier": 3,
+        "description": "Gain gold now and every round for the rest of the game."
+    },
+    {
+        "name": "Nesting Anvils",
+        "tier": 3,
+        "description": "Gain an Artifact Anvil. After you open it, gain a Completed Item Anvil. After you open that, gain a Component Anvil. After you open that, gain gold."
+    },
+    {
+        "name": "Nesting Anvils +",
+        "tier": 3,
+        "description": "Gain an Artifact Anvil. After you open it, gain a Completed Item Anvil. After you open that, gain a Component Anvil. After you open that, gain gold."
+    },
+    {
+        "name": "Nesting Dolls",
+        "tier": 3,
+        "description": "After a champion dies in combat, spawn a copy of them one star level lower with health. Gain free rerolls"
+    },
+    {
+        "name": "New Recruit",
+        "tier": 3,
+        "description": "Gain + max team size and 4-cost champion"
+    },
+    {
+        "name": "New Recruit +",
+        "tier": 3,
+        "description": "Gain + max team size and 4-cost champions"
+    },
+    {
+        "name": "One Buff Two Buff",
+        "tier": 3,
+        "description": "Gain a Red Buff, a Blue Buff, and a Champion Duplicator."
+    },
+    {
+        "name": "Pandora's Items III",
+        "tier": 3,
+        "description": "Round start: items on your bench are randomized.\\n \\n \\n \\n Gain Radiant item."
+    },
+    {
+        "name": "Phreaky Friday",
+        "tier": 3,
+        "description": "Gain an Infinity Force. After 5 player combats, gain another.\\n \\n \\n \\n Infinity Force: Artifact that offers tons of offensive and defensive stats"
+    },
+    {
+        "name": "Phreaky Friday+",
+        "tier": 3,
+        "description": "Gain an Infinity Force. After 3 player combats, gain another.\\n \\n \\n \\n Infinity Force: Artifact that offers tons of offensive and defensive stats."
+    },
+    {
+        "name": "Prismatic Ticket",
+        "tier": 3,
+        "description": "Each time your shop is rerolled you have a% chance to gain a free reroll."
+    },
+    {
+        "name": "Radiant Rascal",
+        "tier": 3,
+        "description": "Gain a Radiant Thief's Gloves item. This equips 2 random Radiant items every round."
+    },
+    {
+        "name": "Radiant Relics",
+        "tier": 3,
+        "description": "Choose 1 of 5 Radiant Items. Gain a Magnetic Remover."
+    },
+    {
+        "name": "Retribution",
+        "tier": 3,
+        "description": "Gain Hands of Justice. Allies equipped with Hand of Justice gain Precision and Critical Strike Chance.\\n \\n \\n \\n Precision: Ability damage can critically strike. Additional Precision grants 10% Critical Strike Damage."
+    },
+    {
+        "name": "Shimmerscale Essence",
+        "tier": 3,
+        "description": "Gain a Mogul's Mail. After player combats, gain a Gamblers Blade.\\n \\n \\n \\n These items give gold as well as combat power."
+    },
+    {
+        "name": "Shopping Spree",
+        "tier": 3,
+        "description": "When you level up, gain a number of free shop refreshes equal to your level +. Gain gold."
+    },
+    {
+        "name": "Soul Awakening",
+        "tier": 3,
+        "description": "Combat start: Your team gains Attack Damage and Ability Power per second for seconds. At max stacks, deal bonus true damage."
+    },
+    {
+        "name": "Starring Up",
+        "tier": 3,
+        "description": "After 3-starring champions, set your level to. Gain rerolls now and at the start of every round."
+    },
+    {
+        "name": "Sweet Treats",
+        "tier": 3,
+        "description": "Gain an Artifact anvil. Your team gains Health for each item equipped on champions."
+    },
+    {
+        "name": "Sword Overflow",
+        "tier": 3,
+        "description": "Gain BF Swords. Your BF Swords grant + Attack Speed."
+    },
+    {
+        "name": "TONS of Stats!",
+        "tier": 3,
+        "description": "Your team gains Health, Attack Damage, Ability Power, Armor, Magic Resist, Attack Speed, and Mana."
+    },
+    {
+        "name": "Tactician's Kitchen",
+        "tier": 3,
+        "description": "Gain a random Emblem. After rounds, gain a Tactician's Cape."
+    },
+    {
+        "name": "The Golden Egg",
+        "tier": 3,
+        "description": "Gain a golden egg that hatches in turns for a huge amount of loot. Winning player combat speeds up the hatch timer by an extra turn."
+    },
+    {
+        "name": "The Trait Tree",
+        "tier": 3,
+        "description": "Gain random Emblems and gold."
+    },
+    {
+        "name": "The Trait Tree+",
+        "tier": 3,
+        "description": "Gain random Emblems, a Reforger, and gold."
+    },
+    {
+        "name": "Trait Ladder",
+        "tier": 3,
+        "description": "Gain a random emblem. After fielding non-unique traits in a player combat, gain a reward. Then increase the number of traits needed and the size of the reward."
+    },
+    {
+        "name": "Upward Mobility",
+        "tier": 3,
+        "description": "Buying XP costs less. Gain Health and free reroll whenever you level up."
+    },
+    {
+        "name": "Urf's Grab Bag",
+        "tier": 3,
+        "description": "Gain Spatula, random components, and gold."
+    },
+    {
+        "name": "Verticality III",
+        "tier": 3,
+        "description": "Champions gain Attack Damage, Ability Power, Armor, and Magic Resist for each ally that shares a trait with them."
+    },
+    {
+        "name": "Wand Overflow",
+        "tier": 3,
+        "description": "Gain Needlessly Large Rods. Your Needlessly Large Rods grant + Attack Speed."
+    },
+    {
+        "name": "We Stick Together",
+        "tier": 3,
+        "description": "Gain a random Emblem and a completed item anvil. Allies that share a trait with that Emblem gain Attack Speed.\\n \\n \\n \\n Into The Arcane Tactician's Crown, 2025"
+    },
+    {
+        "name": "Worth the Wait II",
+        "tier": 3,
+        "description": "Gain 2 copies of a random 2-cost champion. Gain another copy of them at the start of each round for the rest of the game."
+    }
+]
