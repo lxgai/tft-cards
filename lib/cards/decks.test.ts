@@ -17,8 +17,8 @@ const blocks = <T extends CardBlock["type"]>(c: Card, type: T) =>
   c.back.blocks.filter((b): b is Extract<CardBlock, { type: T }> => b.type === type);
 
 describe("deck list", () => {
-  it("is the twelve decks, in curriculum order", () => {
-    expect(decks.map((d) => d.id)).toEqual([
+  it("opens with the twelve whole-set decks, in curriculum order", () => {
+    expect(decks.slice(0, 12).map((d) => d.id)).toEqual([
       "traits-cost-1",
       "traits-cost-2",
       "traits-cost-3",
@@ -35,18 +35,47 @@ describe("deck list", () => {
   });
 
   it("sizes each deck from the data", () => {
-    expect(decks.map((d) => d.cards.length)).toEqual([14, 13, 14, 14, 10, 14, 13, 14, 14, 10, 36, 35]);
+    expect(decks.slice(0, 12).map((d) => d.cards.length)).toEqual([
+      14, 13, 14, 14, 10, 14, 13, 14, 14, 10, 36, 35,
+    ]);
   });
 
-  it("covers every champion twice and every trait once per trait deck", () => {
-    const champCards = decks.filter((d) => d.section === "champions").flatMap((d) => d.cards);
+  it("covers every champion twice across the cost decks", () => {
+    const champCards = decks.filter((d) => d.section === "by-cost").flatMap((d) => d.cards);
     expect(champCards).toHaveLength(130);
     expect(new Set(champCards.map((c) => c.entitySlug)).size).toBe(65);
+  });
+
+  it("adds one deck per fieldable trait, sized to its roster", () => {
+    const byTrait = decks.filter((d) => d.section === "by-trait");
+    expect(byTrait).toHaveLength(35);
+    expect(byTrait.map((d) => d.title)).toContain("Lunar champions");
+    for (const deck of byTrait) {
+      const trait = data.traits.find((t) => `${t.name} champions` === deck.title)!;
+      expect(deck.cards.map((c) => c.entitySlug)).toEqual(trait.championSlugs);
+    }
+  });
+
+  it("gives a trait deck the colour of its top breakpoint", () => {
+    const lunar = decks.find((d) => d.id === "trait-lunar")!;
+    expect(lunar.accent).toEqual({ kind: "tier", color: 6 });
+    expect(decks.find((d) => d.id === "traits-cost-3")!.accent).toEqual({ kind: "cost", cost: 3 });
+  });
+
+  it("gives a trait deck's card both the traits and the ability", () => {
+    const aphelios = decks
+      .find((d) => d.id === "trait-lunar")!
+      .cards.find((c) => c.entitySlug === "aphelios")!;
+    expect(aphelios.id).toBe("champion:aphelios#champ-profile");
+    expect(blocks(aphelios, "chips")[0].items.map((i) => i.label)).toEqual(["Lunar", "Rapidfire"]);
+    expect(blocks(aphelios, "subject")[0].text).toBe("Moonlight's Onslaught");
+    expect(blocks(aphelios, "text")[0].text).toContain("Equip Severum");
   });
 
   it("leaves Eclipse out of the roster deck but keeps it in descriptions", () => {
     expect(deck("trait-rosters").cards.map((c) => c.entitySlug)).not.toContain("eclipse");
     expect(deck("trait-descriptions").cards.map((c) => c.entitySlug)).toContain("eclipse");
+    expect(decks.map((d) => d.id)).not.toContain("trait-eclipse");
   });
 });
 
@@ -57,9 +86,20 @@ describe("card identity", () => {
     expect(cardFor("trait-rosters", "Apex Predator").id).toBe("trait:apex-predator#trait-roster");
   });
 
-  it("is unique across the whole study section", () => {
-    const ids = decks.flatMap((d) => d.cards.map((c) => c.id));
-    expect(new Set(ids).size).toBe(ids.length);
+  it("is unique within a deck", () => {
+    for (const deck of decks) {
+      const ids = deck.cards.map((c) => c.id);
+      expect(new Set(ids).size, deck.id).toBe(ids.length);
+    }
+  });
+
+  it("is the same card wherever it appears — an id names content, not a deck", () => {
+    // Aphelios is Lunar and Rapidfire, so he is in two trait decks.
+    const inLunar = decks.find((d) => d.id === "trait-lunar")!.cards.find((c) => c.entitySlug === "aphelios");
+    const inRapidfire = decks
+      .find((d) => d.id === "trait-rapidfire")!
+      .cards.find((c) => c.entitySlug === "aphelios");
+    expect(inLunar!.id).toBe(inRapidfire!.id);
   });
 });
 
@@ -70,6 +110,22 @@ describe("card content", () => {
     // Inferno is 2/3/5/7: bronze, silver, gold, prismatic.
     expect(back.items[0].tiers).toEqual([1, 3, 5, 6]);
     expect(back.items[1].tiers).toEqual([1, 3, 5]);
+  });
+
+  it("carries the recall cue the deck is for on the front", () => {
+    const hint = (deckId: string, name: string) =>
+      cardFor(deckId, name).front.blocks.find((b) => b.type === "note")!;
+    expect(hint("traits-cost-1", "Akali").text).toBe(
+      "List all traits associated with this champion.",
+    );
+    expect(hint("abilities-cost-1", "Akali").text).toBe(
+      "List the champion’s ability. Optional: mana cost",
+    );
+    expect(hint("trait-descriptions", "Inferno").text).toBe(
+      "Describe the trait’s effect and what happens at each breakpoint.",
+    );
+    expect(hint("trait-rosters", "Inferno").text).toBe("Name all champions with this trait.");
+    expect(hint("trait-lunar", "Diana").text).toBe("List this champion’s traits and ability.");
   });
 
   it("names Kayle's zero-mana ability as a passive rather than 0 / 0", () => {

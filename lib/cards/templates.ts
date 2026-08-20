@@ -68,7 +68,7 @@ export const championTraitsTemplate: CardTemplate<Champion> = {
   id: "champ-traits",
   entityType: "champion",
   slugOf: (c) => c.slug,
-  front: championSubject("Which traits? Say all of them, then flip."),
+  front: championSubject("List all traits associated with this champion."),
   back: (c, data) => ({
     blocks: [
       {
@@ -87,7 +87,7 @@ export const championAbilityTemplate: CardTemplate<Champion> = {
   id: "champ-ability",
   entityType: "champion",
   slugOf: (c) => c.slug,
-  front: championSubject("What does the ability do, and what does it cost?"),
+  front: championSubject("List the champion’s ability. Optional: mana cost"),
   back: (c) => ({
     blocks: [
       { type: "subject", text: c.abilityName },
@@ -103,7 +103,7 @@ export const traitDescriptionTemplate: CardTemplate<Trait> = {
   id: "trait-description",
   entityType: "trait",
   slugOf: (t) => t.slug,
-  front: traitSubject("Breakpoints, then the effect. Then flip."),
+  front: traitSubject("Describe the trait’s effect and what happens at each breakpoint."),
   back: (t) => ({
     blocks: [
       ...effectBlocks(t),
@@ -117,7 +117,7 @@ export const traitRosterTemplate: CardTemplate<Trait> = {
   id: "trait-roster",
   entityType: "trait",
   slugOf: (t) => t.slug,
-  front: traitSubject("Name every champion that carries it."),
+  front: traitSubject("Name all champions with this trait."),
   back: (t, data) => ({
     blocks: [
       { type: "kv", label: "Champions", value: String(t.championSlugs.length) },
@@ -126,9 +126,36 @@ export const traitRosterTemplate: CardTemplate<Trait> = {
   }),
 };
 
+/**
+ * Traits and ability on one back — the card you want when drilling a single
+ * trait's roster, where the question is "what does this unit actually give me".
+ */
+export const championProfileTemplate: CardTemplate<Champion> = {
+  id: "champ-profile",
+  entityType: "champion",
+  slugOf: (c) => c.slug,
+  front: championSubject("List this champion’s traits and ability."),
+  back: (c, data) => ({
+    blocks: [
+      {
+        type: "chips",
+        items: c.traitSlugs.map((slug) => {
+          const trait = data.traitBySlug.get(slug)!;
+          return { label: trait.name, tiers: trait.tiers.map((t) => t.color) };
+        }),
+      },
+      { type: "subject", text: c.abilityName },
+      { type: "kv", label: "Mana", value: c.mana.max === 0 ? "None — passive" : `${c.mana.raw} mana` },
+      { type: "text", text: c.ability },
+      { type: "caveat", text: "Numeric values are stripped from the source data." },
+    ],
+  }),
+};
+
 export const CARD_TEMPLATES = [
   championTraitsTemplate,
   championAbilityTemplate,
+  championProfileTemplate,
   traitDescriptionTemplate,
   traitRosterTemplate,
 ] as const;

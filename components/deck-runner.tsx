@@ -9,7 +9,7 @@ import type { Card, CardBlock, Deck } from "@/lib/cards/types";
 import { Blocks } from "./blocks";
 import { Screen, StudyBar } from "./chrome";
 import { Hex } from "./hex";
-import { costSwatch, deckSwatch } from "./tiers";
+import { accentSwatch, costSwatch } from "./tiers";
 
 const SWIPE = 48;
 
@@ -26,7 +26,7 @@ export function DeckRunner({ deck }: { deck: Deck }) {
 
   const cards = orderCards(deck, shuffled, seed);
   const card = cards[index];
-  const accent = deckSwatch(deck.id);
+  const accent = accentSwatch(deck.accent);
 
   const go = useCallback(
     (delta: number) => {

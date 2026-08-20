@@ -55,11 +55,29 @@ export function makeCard<E>(template: CardTemplate<E>, entity: E, data: Dataset)
   };
 }
 
+/**
+ * The deck's colour, named by what it means rather than by a hex value, so the
+ * card engine stays free of UI. `components/tiers.ts` resolves it.
+ */
+export type DeckAccent =
+  | { kind: "cost"; cost: Cost }
+  | { kind: "tier"; color: TierColor };
+
+/** Where the deck sits in the deck list. */
+export type DeckSection = "by-cost" | "traits" | "by-trait";
+
 export type Deck = {
   id: string;
   title: string;
   /** One line on what the deck drills. */
   blurb: string;
-  section: "champions" | "traits";
+  section: DeckSection;
+  accent: DeckAccent;
   cards: Card[];
+};
+
+export const SECTION_LABELS: Record<DeckSection, string> = {
+  "by-cost": "By cost",
+  traits: "Traits",
+  "by-trait": "By trait",
 };

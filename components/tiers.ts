@@ -1,3 +1,4 @@
+import type { DeckAccent } from "@/lib/cards/types";
 import type { Cost, TierColor } from "@/lib/data/types";
 
 export type Swatch = { fill: string; ink: string; label: string };
@@ -31,8 +32,6 @@ export const tierSwatch = (color: TierColor): Swatch =>
   BREAKPOINT_TIER[color] ?? BREAKPOINT_TIER[1];
 
 /** Deck accent, so the deck list and the card spine agree on a colour. */
-export function deckSwatch(deckId: string): Swatch {
-  const cost = deckId.match(/-(\d)$/);
-  if (cost) return COST_TIER[Number(cost[1]) as Cost];
-  return deckId === "trait-rosters" ? BREAKPOINT_TIER[6] : BREAKPOINT_TIER[4];
+export function accentSwatch(accent: DeckAccent): Swatch {
+  return accent.kind === "cost" ? COST_TIER[accent.cost] : tierSwatch(accent.color);
 }

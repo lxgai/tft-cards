@@ -18,7 +18,7 @@ the result, and the result is gone when you navigate away. That is deliberate.
 | `npm run build` | Static export to `./out`, then generate `out/sw.js` |
 | `npm run preview` | Build and serve `./out` on :4321 |
 | `npm run serve` | Serve an existing `./out` without rebuilding |
-| `npm test` | 82 unit tests — the data layer and every distractor rule |
+| `npm test` | 87 unit tests — the data layer and every distractor rule |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run inspect` | Print what the data layer made of the source export |
@@ -30,16 +30,20 @@ check a data or generation change without opening a browser.
 
 ## The two sections
 
-**Study** — 12 decks, 201 cards. Pick a deck, flip through it. Tap the card or
-press space to flip, swipe or use the arrow keys to move, shuffle if you want a
-different order. Nothing is scored and nothing is counted.
+**Study** — 47 decks, 341 cards, in three sections. Pick a deck, flip through
+it. Tap the card or press space to flip, swipe or use the arrow keys to move,
+shuffle if you want a different order. Nothing is scored and nothing is counted.
 
-| Deck | Front | Back |
-|---|---|---|
-| 1-cost … 5-cost traits | Champion | Its traits, each with its breakpoint metals |
-| 1-cost … 5-cost abilities | Champion | Ability name, mana, and what it does |
-| Trait descriptions | Trait | Type, breakpoint ladder, effect |
-| Trait rosters | Trait | Every champion with it, grouped by cost |
+| Section | Deck | Front | Back |
+|---|---|---|---|
+| By cost | 1-cost … 5-cost traits | Champion | Its traits, each with its breakpoint metals |
+| By cost | 1-cost … 5-cost abilities | Champion | Ability name, mana, and what it does |
+| Traits | Trait descriptions | Trait | Type, breakpoint ladder, effect |
+| Traits | Trait rosters | Trait | Every champion with it, grouped by cost |
+| By trait | "Lunar champions", one per trait (35) | Champion | Its traits *and* its ability |
+
+A champion in three traits appears in three of the by-trait decks, as the same
+card: a card id names its content, not where you met it.
 
 **Test** — 6 levels, 22 units, presented as a syllabus rather than a progress
 tracker: no completion marks, no accuracy, no locking, no "recommended next".
