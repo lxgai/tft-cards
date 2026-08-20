@@ -40,7 +40,7 @@ function rosterOptionCount(correct: number): number {
 type Draft = Omit<Question, "unitId">;
 
 function championOption(c: Champion): Option {
-  return { id: c.slug, label: c.name };
+  return { id: c.slug, label: c.name, cost: c.cost };
 }
 
 function traitOption(t: Trait): Option {
@@ -57,12 +57,14 @@ function draft(
   options: Option[],
   correct: string[],
   rng: Rng,
+  emphasis?: string,
 ): Draft {
   return {
     id: `${entityType}:${slug}#${templateId}`,
     templateId,
     mode,
     lead,
+    emphasis,
     prompt,
     options: shuffle(options, rng),
     correct,
@@ -240,11 +242,12 @@ export const traitRosterTemplate: QuestionTemplate<Trait> = {
       "trait",
       t.slug,
       "multi",
-      `Select all ${members.length} champions with this trait.`,
-      subject(t.name),
+      `Select all ${members.length} ${t.name} champions.`,
+      [],
       [...members, ...wrong].map(championOption),
       t.championSlugs,
       rng,
+      t.name,
     );
   },
 };
@@ -426,11 +429,12 @@ export const oddOneOutTemplate: QuestionTemplate<Trait> = {
       "trait",
       t.slug,
       "single",
-      `Which of these is NOT ${t.name}?`,
-      subject(t.name),
+      `Which of these is not ${t.name}?`,
+      [],
       [impostor, ...members].map(championOption),
       [impostor.slug],
       rng,
+      "not",
     );
   },
 };
@@ -458,10 +462,11 @@ export const reachBreakpointTemplate: QuestionTemplate<Trait> = {
       t.slug,
       "single",
       `You have ${have} ${t.name}. Which of these gets you toward ${next}?`,
-      [{ type: "chips", items: [{ label: `${have} / ${next} ${t.name}` }] }],
+      [],
       [member, ...wrong].map(championOption),
       [member.slug],
       rng,
+      t.name,
     );
   },
 };

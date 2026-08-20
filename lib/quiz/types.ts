@@ -15,6 +15,8 @@ export type Option = {
   label: string;
   /** Longer body for options that are a paragraph rather than a name. */
   body?: string;
+  /** Cost tier, when the option is a champion — drawn as the hex tile. */
+  cost?: Cost;
 };
 
 export type Question = {
@@ -25,6 +27,8 @@ export type Question = {
   mode: QuestionMode;
   /** The ask, in one line. */
   lead: string;
+  /** Substring of `lead` to highlight — the word the question turns on. */
+  emphasis?: string;
   /** The subject, rendered with the same blocks the study cards use. */
   prompt: CardBlock[];
   options: Option[];
@@ -75,6 +79,10 @@ export type Level = {
   level: number;
   title: string;
   blurb: string;
+  /** FOUNDATION / INTERMEDIATE / ADVANCED — the rung of the ladder. */
+  band: "FOUNDATION" | "INTERMEDIATE" | "ADVANCED";
+  /** What the whole level assumes, e.g. "L1-L2". */
+  assumes: string;
   units: Unit[];
 };
 

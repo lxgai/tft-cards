@@ -11,15 +11,17 @@ export type CardBlock =
   /** The card's subject — a champion or trait name. */
   | { type: "subject"; text: string; cost?: Cost; traitType?: string }
   | { type: "text"; text: string }
-  /** A row of small labels: trait names, keywords. */
-  | { type: "chips"; items: { label: string; accent?: TierColor }[] }
+  /** A row of small labels: trait names, each with its breakpoint metals. */
+  | { type: "chips"; items: { label: string; tiers?: TierColor[] }[] }
   /** A labelled list, e.g. one cost tier of a trait's roster. */
   | { type: "group"; label: string; cost?: Cost; items: string[] }
   | { type: "kv"; label: string; value: string }
   /** Trait breakpoints. `text: null` renders as "no distinct effect in data". */
   | { type: "tiers"; items: { breakpoint: number; color: TierColor; text: string | null }[] }
-  /** Secondary text: keyword glossaries, parser caveats. */
-  | { type: "note"; text: string };
+  /** Secondary text: keyword glossaries, trait flavour. */
+  | { type: "note"; text: string }
+  /** A remark about the data itself, not the game. Rendered smallest. */
+  | { type: "caveat"; text: string };
 
 export type CardFace = { blocks: CardBlock[] };
 

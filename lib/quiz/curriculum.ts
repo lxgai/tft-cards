@@ -35,6 +35,8 @@ export const LEVELS: Level[] = [
   {
     level: 1,
     title: "Roster index",
+    band: "FOUNDATION",
+    assumes: "nothing",
     blurb: "The foundation — every later level assumes it.",
     units: [
       {
@@ -51,6 +53,8 @@ export const LEVELS: Level[] = [
   {
     level: 2,
     title: "Trait vocabulary",
+    band: "FOUNDATION",
+    assumes: "nothing",
     blurb: "Learnable without knowing a single champion.",
     units: [
       {
@@ -85,6 +89,8 @@ export const LEVELS: Level[] = [
   {
     level: 3,
     title: "Champion → traits",
+    band: "INTERMEDIATE",
+    assumes: "L1-L2",
     blurb: "Multi-select: most champions bring two or three.",
     units: [
       ...costUnits(
@@ -108,6 +114,8 @@ export const LEVELS: Level[] = [
   {
     level: 4,
     title: "Trait → roster",
+    band: "INTERMEDIATE",
+    assumes: "L1-L3",
     blurb: "The reverse direction, and much harder. This is the emblem-scouting skill.",
     units: [
       {
@@ -152,6 +160,8 @@ export const LEVELS: Level[] = [
   {
     level: 5,
     title: "Abilities",
+    band: "ADVANCED",
+    assumes: "L1",
     blurb: "What the unit actually does when it casts.",
     units: [
       {
@@ -196,6 +206,8 @@ export const LEVELS: Level[] = [
   {
     level: 6,
     title: "Synthesis",
+    band: "ADVANCED",
+    assumes: "L1-L5",
     blurb: "No new facts — applied recall.",
     units: [
       {

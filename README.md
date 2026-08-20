@@ -30,11 +30,18 @@ data/            champions.json, traits.json (+ augments, wisps for phase 2)
 lib/data/        loading, normalizing, the trait description parser, slugs
 lib/cards/       card templates and the 12 study decks
 lib/quiz/        question templates, distractor strategies, grading, session
+components/      the design system: hex tiles, card blocks, runners, chrome
 app/             the two sections: Study and Test
 ```
 
 Study and Test share the data layer and nothing else — Study never grades, Test
 never shows an ungraded card.
+
+The look comes from a Claude Design canvas: bone and ink, Space Grotesk over
+Karla, and one signature element — cost and trait breakpoints both live in a
+hexagon, so the two ladders read the same way at a glance. Colours and metals
+are tokens in `app/globals.css`; `components/tiers.ts` maps a cost or a
+breakpoint colour to its swatch.
 
 A card template and a question template are both config objects: entity type,
 faces or options, and a stable id scheme (`{entityType}:{slug}#{templateId}`).

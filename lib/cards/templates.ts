@@ -41,22 +41,44 @@ function effectBlocks(trait: Trait): CardBlock[] {
   return blocks;
 }
 
-const championSubject = (c: Champion): CardFace => ({
-  blocks: [{ type: "subject", text: c.name, cost: c.cost }],
-});
+/**
+ * A front face is the subject plus the recall cue for this deck — the card
+ * says what to try to remember before you flip it.
+ */
+const championSubject =
+  (hint: string) =>
+  (c: Champion): CardFace => ({
+    blocks: [
+      { type: "subject", text: c.name, cost: c.cost },
+      { type: "note", text: hint },
+    ],
+  });
 
-const traitSubject = (t: Trait): CardFace => ({
-  blocks: [{ type: "subject", text: t.name, traitType: t.type }],
-});
+const traitSubject =
+  (hint: string) =>
+  (t: Trait): CardFace => ({
+    blocks: [
+      { type: "subject", text: t.name, traitType: t.type },
+      { type: "note", text: hint },
+    ],
+  });
 
 /** Champion name -> the traits it brings. */
 export const championTraitsTemplate: CardTemplate<Champion> = {
   id: "champ-traits",
   entityType: "champion",
   slugOf: (c) => c.slug,
-  front: championSubject,
-  back: (c) => ({
-    blocks: [{ type: "chips", items: c.traitNames.map((label) => ({ label })) }],
+  front: championSubject("Which traits? Say all of them, then flip."),
+  back: (c, data) => ({
+    blocks: [
+      {
+        type: "chips",
+        items: c.traitSlugs.map((slug) => {
+          const trait = data.traitBySlug.get(slug)!;
+          return { label: trait.name, tiers: trait.tiers.map((t) => t.color) };
+        }),
+      },
+    ],
   }),
 };
 
@@ -65,12 +87,13 @@ export const championAbilityTemplate: CardTemplate<Champion> = {
   id: "champ-ability",
   entityType: "champion",
   slugOf: (c) => c.slug,
-  front: championSubject,
+  front: championSubject("What does the ability do, and what does it cost?"),
   back: (c) => ({
     blocks: [
       { type: "subject", text: c.abilityName },
-      { type: "kv", label: "Mana", value: c.mana.max === 0 ? "None — passive" : c.mana.raw },
+      { type: "kv", label: "Mana", value: c.mana.max === 0 ? "None — passive" : `${c.mana.raw} mana` },
       { type: "text", text: c.ability },
+      { type: "caveat", text: "Numeric values are stripped from the source data." },
     ],
   }),
 };
@@ -80,11 +103,11 @@ export const traitDescriptionTemplate: CardTemplate<Trait> = {
   id: "trait-description",
   entityType: "trait",
   slugOf: (t) => t.slug,
-  front: traitSubject,
+  front: traitSubject("Breakpoints, then the effect. Then flip."),
   back: (t) => ({
     blocks: [
-      { type: "kv", label: "Type", value: t.type },
       ...effectBlocks(t),
+      { type: "caveat", text: "Numeric values are stripped from the source data." },
     ],
   }),
 };
@@ -94,7 +117,7 @@ export const traitRosterTemplate: CardTemplate<Trait> = {
   id: "trait-roster",
   entityType: "trait",
   slugOf: (t) => t.slug,
-  front: traitSubject,
+  front: traitSubject("Name every champion that carries it."),
   back: (t, data) => ({
     blocks: [
       { type: "kv", label: "Champions", value: String(t.championSlugs.length) },

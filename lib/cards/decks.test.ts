@@ -64,9 +64,12 @@ describe("card identity", () => {
 });
 
 describe("card content", () => {
-  it("puts a champion's traits on the back", () => {
+  it("puts a champion's traits on the back, each with its breakpoint metals", () => {
     const back = blocks(cardFor("traits-cost-1", "Akali"), "chips")[0];
-    expect(back).toEqual({ type: "chips", items: [{ label: "Inferno" }, { label: "Adaptor" }, { label: "Ravager" }] });
+    expect(back.items.map((i) => i.label)).toEqual(["Inferno", "Adaptor", "Ravager"]);
+    // Inferno is 2/3/5/7: bronze, silver, gold, prismatic.
+    expect(back.items[0].tiers).toEqual([1, 3, 5, 6]);
+    expect(back.items[1].tiers).toEqual([1, 3, 5]);
   });
 
   it("names Kayle's zero-mana ability as a passive rather than 0 / 0", () => {
@@ -75,7 +78,7 @@ describe("card content", () => {
     expect(blocks(cardFor("abilities-cost-1", "Akali"), "kv")).toContainEqual({
       type: "kv",
       label: "Mana",
-      value: "0 / 30",
+      value: "0 / 30 mana",
     });
   });
 
