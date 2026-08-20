@@ -10,7 +10,8 @@
     "inspect": "vite-node -c vitest.config.mts scripts/inspect-data.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "cards": "vite-node -c vitest.config.mts scripts/sample-cards.ts"
+    "cards": "vite-node -c vitest.config.mts scripts/sample-cards.ts",
+    "quiz": "vite-node -c vitest.config.mts scripts/sample-quiz.ts"
   },
   "dependencies": {
     "next": "16.3.1",
